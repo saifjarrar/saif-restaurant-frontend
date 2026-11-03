@@ -9,65 +9,64 @@
 
   <!-- Summary strip -->
   <section class="strip" aria-label="Summary">
-    <div class="stat">
-      <span class="label">Orders today</span>
-      <b>128</b>
-      <small class="up">12% more than last Monday</small>
-    </div>
-    <div class="stat">
-      <span class="label">Reservations</span>
-      <b>24</b>
-      <small>6 tables still free tonight</small>
-    </div>
-    <div class="stat">
-      <span class="label">Sales</span>
-      <b>$4,820</b>
-      <small class="up">8% more than last Monday</small>
-    </div>
-    <div class="stat">
-      <span class="label">Guest rating</span>
-      <b>4.8</b>
-      <small>From 312 reviews</small>
-    </div>
+    @for (info of restaurantinfo; track info.title) {
+      <div class="stat">
+        <span class="label">{{ info.title }}</span>
+        <b>{{ info.value }}</b>
+        <small [class.up]="info.color == 'up'">{{ info.describe }}</small>
+      </div>
+    }
   </section>
 
   <!-- Kitchen tickets -->
   <section class="block">
     <div class="block-head">
       <h2>On the kitchen board</h2>
-      <span class="count">3 orders</span>
+      <span class="count">{{ ordertickets.length }} orders</span>
     </div>
 
     <div class="tickets">
-      <article class="ticket">
-        <div class="t-top"><b>#2481</b><span class="status cooking">In the kitchen</span></div>
-        <p class="t-table">Table 7</p>
-        <ul>
-          <li><span>1×</span> Grilled sea bass</li>
-          <li><span>1×</span> Lemon rice</li>
-        </ul>
-        <p class="t-time">Ready in about 12 min</p>
-      </article>
-
-      <article class="ticket">
-        <div class="t-top"><b>#2482</b><span class="status received">Received</span></div>
-        <p class="t-table">Table 3</p>
-        <ul>
-          <li><span>2×</span> Mixed grill</li>
-          <li><span>1×</span> Hummus</li>
-        </ul>
-        <p class="t-time">Waiting for the grill</p>
-      </article>
-
-      <article class="ticket">
-        <div class="t-top"><b>#2480</b><span class="status served">Served</span></div>
-        <p class="t-table">Table 12</p>
-        <ul>
-          <li><span>1×</span> Lamb ouzi</li>
-          <li><span>2×</span> Fattoush</li>
-        </ul>
-        <p class="t-time">Served 6 min ago</p>
-      </article>
+      @for (order of ordertickets; track order.ordernum) {
+        <article
+          class="ticket"
+          [class.received]="order.orderstatus === 'Received'"
+          [class.cooking]="order.orderstatus === 'In The Kitchen'"
+          [class.served]="order.orderstatus === 'Served'"
+        >
+          <div class="t-top">
+            <b>{{ order.ordernum }}</b>
+            @if (order.orderstatus === 'Received') {
+              <span class="status received">{{ order.orderstatus }}</span>
+            } @else if (order.orderstatus === 'In The Kitchen') {
+              <span class="status cooking">{{ order.orderstatus }}</span>
+            } @else if (order.orderstatus === 'Served') {
+              <span class="status served">{{ order.orderstatus }}</span>
+            }
+          </div>
+          <p class="t-table">{{ order.table }}</p>
+          <ul>
+            @for (dish of order.dishes; track dish.name) {
+              <li>
+                <span>{{ dish.quantity }}×</span> {{ dish.name }}
+              </li>
+            }
+          </ul>
+          @if (order.orderstatus !== 'Served') {
+            <p class="t-time">Ready in about {{ order.readytime }}</p>
+          } @else {
+            <p class="t-time">Served and enjoyed</p>
+          }
+          @if (order.orderstatus === 'In The Kitchen') {
+            <button class="t-btn" type="button" (click)="markAs(order.ordernum)">
+              Mark as Served
+            </button>
+          } @else if (order.orderstatus === 'Received') {
+            <button class="t-btn" type="button" (click)="markAs(order.ordernum)">
+              Start Cooking
+            </button>
+          }
+        </article>
+      }
     </div>
   </section>
 
@@ -76,26 +75,19 @@
     <section class="block">
       <div class="block-head">
         <h2>Tonight's reservations</h2>
-        <span class="count">4 of 24</span>
+        <span class="count">{{ tonightreservations.length }} of 24</span>
       </div>
 
       <ol class="slots">
-        <li>
-          <time>6:30 PM</time>
-          <div><b>Haddad family</b><small>4 guests · Table 5</small></div>
-        </li>
-        <li>
-          <time>7:00 PM</time>
-          <div><b>Layla Saleh</b><small>2 guests · Table 2</small></div>
-        </li>
-        <li>
-          <time>8:00 PM</time>
-          <div><b>Company dinner</b><small>10 guests · Terrace</small></div>
-        </li>
-        <li>
-          <time>8:30 PM</time>
-          <div><b>Omar Khalil</b><small>4 guests · Table 7</small></div>
-        </li>
+        @for (reservation of tonightreservations; track reservation.time) {
+          <li>
+            <time>{{ reservation.time }}</time>
+            <div>
+              <b>{{ reservation.name }}</b
+              ><small>{{ reservation.guests }} guests · {{ reservation.table }}</small>
+            </div>
+          </li>
+        }
       </ol>
     </section>
 
@@ -107,26 +99,15 @@
       </div>
 
       <ul class="dishes">
-        <li>
-          <div class="d-row"><b>Mansaf</b><span>34</span></div>
-          <div class="bar"><i style="--w: 86%"></i></div>
-        </li>
-        <li>
-          <div class="d-row"><b>Mixed grill</b><span>28</span></div>
-          <div class="bar"><i style="--w: 72%"></i></div>
-        </li>
-        <li>
-          <div class="d-row"><b>Grilled sea bass</b><span>22</span></div>
-          <div class="bar"><i style="--w: 58%"></i></div>
-        </li>
-        <li>
-          <div class="d-row"><b>Fattoush</b><span>17</span></div>
-          <div class="bar"><i style="--w: 44%"></i></div>
-        </li>
-        <li>
-          <div class="d-row"><b>Knafeh</b><span>14</span></div>
-          <div class="bar"><i style="--w: 36%"></i></div>
-        </li>
+        @for (dish of mostordered; track dish.name) {
+          <li>
+            <div class="d-row">
+              <b>{{ dish.name }}</b
+              ><span>{{ dish.quantity }}</span>
+            </div>
+            <div class="bar"><i [style.--w]="barWidth(dish.quantity) + '%'"></i></div>
+          </li>
+        }
       </ul>
     </section>
   </div>
