@@ -1,0 +1,147 @@
+<main class="page">
+  <header class="head">
+    <h1>Reserve a table</h1>
+    <p class="sub">Pick a day, a time and how many of you are coming. We'll hold your table.</p>
+  </header>
+
+  <div class="layout">
+    <!-- Booking form (static, choices work with CSS only) -->
+    <section class="booking" aria-label="Book a table">
+      <div class="group">
+        <h2>Day</h2>
+        <div class="chips days">
+          <input class="pick" type="radio" name="day" id="day-1" checked />
+          <label for="day-1"><small>Today</small><b>2</b></label>
+          <input class="pick" type="radio" name="day" id="day-2" />
+          <label for="day-2"><small>Tue</small><b>3</b></label>
+          <input class="pick" type="radio" name="day" id="day-3" />
+          <label for="day-3"><small>Wed</small><b>4</b></label>
+          <input class="pick" type="radio" name="day" id="day-4" />
+          <label for="day-4"><small>Thu</small><b>5</b></label>
+          <input class="pick" type="radio" name="day" id="day-5" />
+          <label for="day-5"><small>Fri</small><b>6</b></label>
+          <input class="pick" type="radio" name="day" id="day-6" />
+          <label for="day-6"><small>Sat</small><b>7</b></label>
+          <input class="pick" type="radio" name="day" id="day-7" />
+          <label for="day-7"><small>Sun</small><b>8</b></label>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>Guests</h2>
+        <div class="chips guests">
+          <input class="pick" type="radio" name="guests" id="g-1" />
+          <label for="g-1">1</label>
+          <input class="pick" type="radio" name="guests" id="g-2" />
+          <label for="g-2">2</label>
+          <input class="pick" type="radio" name="guests" id="g-3" />
+          <label for="g-3">3</label>
+          <input class="pick" type="radio" name="guests" id="g-4" checked />
+          <label for="g-4">4</label>
+          <input class="pick" type="radio" name="guests" id="g-5" />
+          <label for="g-5">5</label>
+          <input class="pick" type="radio" name="guests" id="g-6" />
+          <label for="g-6">6</label>
+          <input class="pick" type="radio" name="guests" id="g-7" />
+          <label for="g-7">7</label>
+          <input class="pick" type="radio" name="guests" id="g-8" />
+          <label for="g-8">8</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>Time</h2>
+        <div class="chips times">
+          <input class="pick" type="radio" name="time" id="t-1" />
+          <label for="t-1">1:00 PM</label>
+          <input class="pick" type="radio" name="time" id="t-2" />
+          <label for="t-2">2:00 PM</label>
+          <input class="pick" type="radio" name="time" id="t-3" />
+          <label for="t-3">6:30 PM</label>
+          <input class="pick" type="radio" name="time" id="t-4" />
+          <label for="t-4">7:00 PM</label>
+          <input class="pick" type="radio" name="time" id="t-5" disabled />
+          <label for="t-5">7:30 PM<small>Full</small></label>
+          <input class="pick" type="radio" name="time" id="t-6" checked />
+          <label for="t-6">8:00 PM</label>
+          <input class="pick" type="radio" name="time" id="t-7" />
+          <label for="t-7">8:30 PM</label>
+          <input class="pick" type="radio" name="time" id="t-8" disabled />
+          <label for="t-8">9:00 PM<small>Full</small></label>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>Seating</h2>
+        <div class="chips area">
+          <input class="pick" type="radio" name="area" id="a-1" checked />
+          <label for="a-1">Indoor</label>
+          <input class="pick" type="radio" name="area" id="a-2" />
+          <label for="a-2">Terrace</label>
+          <input class="pick" type="radio" name="area" id="a-3" />
+          <label for="a-3">Family section</label>
+        </div>
+      </div>
+
+      <div class="group two-fields">
+        <div class="field">
+          <input type="text" id="res-name" placeholder=" " autocomplete="name" />
+          <label for="res-name">Full name</label>
+        </div>
+        <div class="field">
+          <input type="tel" id="res-phone" placeholder=" " autocomplete="tel" />
+          <label for="res-phone">Phone number</label>
+        </div>
+        <div class="field wide">
+          <textarea id="res-notes" rows="3" placeholder=" "></textarea>
+          <label for="res-notes">Notes (allergies, birthday, high chair)</label>
+        </div>
+      </div>
+
+      <button class="btn" type="button">Confirm reservation</button>
+    </section>
+
+    <!-- Side -->
+    <aside class="side">
+      <section class="card dark">
+        <h2>Opening hours</h2>
+        <ul class="hours">
+          <li><span>Sunday to Thursday</span><b>12:00 PM to 11:00 PM</b></li>
+          <li><span>Friday and Saturday</span><b>12:00 PM to 12:00 AM</b></li>
+        </ul>
+        <p class="note">Kitchen closes 30 minutes before closing time.</p>
+      </section>
+
+      <section class="card">
+        <h2>Your upcoming reservations</h2>
+        <ul class="upcoming">
+          <li>
+            <div class="date"><small>Fri</small><b>6</b></div>
+            <div class="info">
+              <b>8:00 PM · 4 guests</b>
+              <small>Terrace</small>
+            </div>
+            <span class="status ok">Confirmed</span>
+          </li>
+          <li>
+            <div class="date"><small>Sat</small><b>14</b></div>
+            <div class="info">
+              <b>7:00 PM · 2 guests</b>
+              <small>Indoor</small>
+            </div>
+            <span class="status wait">Pending</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Good to know</h2>
+        <ul class="tips">
+          <li>We hold your table for 15 minutes after the booking time.</li>
+          <li>For groups of 9 or more, please call us.</li>
+          <li>Tell us about allergies in the notes, and the kitchen will prepare for them.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>

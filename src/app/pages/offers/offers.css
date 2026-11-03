@@ -1,0 +1,143 @@
+/* Light page like the rest of the app (background comes from src/styles.css).
+   Text on light areas is always dark; light text is only used on dark green. */
+:host {
+  display: block;
+  min-height: calc(100vh - 72px);
+  color: var(--ink);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.page { width: min(1120px, 100%); margin: 0 auto; padding: 40px 28px 64px; }
+
+.head { margin-bottom: 24px; }
+.head h1 { font-family: "Fraunces", Georgia, serif; font-size: clamp(34px, 4.5vw, 46px); font-weight: 700; letter-spacing: -.02em; color: var(--brand-dark); }
+.sub { margin-top: 8px; max-width: 56ch; font-size: 16px; line-height: 1.6; color: #2c3d35; }
+
+/* ---------- Today's offer (dark green, light text) ---------- */
+.today {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  padding: 28px 34px;
+  color: #fff;
+  background: var(--brand-dark);
+  border-radius: 18px;
+  box-shadow: 0 30px 50px -32px rgba(11, 54, 43, .8);
+  animation: rise .7s var(--ease) both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.label { display: inline-block; padding: 4px 12px; border-radius: 99px; font-size: 12.5px; font-weight: 700; color: var(--brand-dark); background: var(--accent); }
+.today h2 { margin-top: 12px; font-family: "Fraunces", Georgia, serif; font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; letter-spacing: -.01em; color: #fff; }
+.today p { margin-top: 8px; max-width: 52ch; font-size: 16px; line-height: 1.55; color: #fff; }
+.ends { text-align: right; padding-left: 24px; border-left: 1px solid rgba(255, 255, 255, .35); }
+.ends small { display: block; font-size: 14px; font-weight: 600; color: #fff; }
+.ends b { font-family: "Fraunces", Georgia, serif; font-size: 34px; font-weight: 700; color: var(--accent); }
+
+.layout { display: grid; grid-template-columns: 1fr 320px; gap: 28px; align-items: start; margin-top: 32px; }
+
+/* ---------- Filter (radios, CSS only) ---------- */
+.left { position: relative; }
+.filter { position: absolute; opacity: 0; pointer-events: none; }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tabs label {
+  padding: 10px 20px;
+  font-size: 15px; font-weight: 600;
+  color: var(--brand-dark);
+  background: #fff;
+  border: 1.5px solid #9fb0a4;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.tabs label:hover { border-color: var(--brand); }
+
+#o-all:checked      ~ .tabs label[for="o-all"],
+#o-dine:checked     ~ .tabs label[for="o-dine"],
+#o-delivery:checked ~ .tabs label[for="o-delivery"],
+#o-takeaway:checked ~ .tabs label[for="o-takeaway"] { color: #fff; background: var(--brand); border-color: var(--brand); }
+
+#o-all:focus-visible      ~ .tabs label[for="o-all"],
+#o-dine:focus-visible     ~ .tabs label[for="o-dine"],
+#o-delivery:focus-visible ~ .tabs label[for="o-delivery"],
+#o-takeaway:focus-visible ~ .tabs label[for="o-takeaway"] { outline: 3px solid rgba(240, 168, 44, .8); outline-offset: 2px; }
+
+#o-dine:checked     ~ .grid .offer:not(.dine),
+#o-delivery:checked ~ .grid .offer:not(.delivery),
+#o-takeaway:checked ~ .grid .offer:not(.takeaway) { display: none; }
+
+/* ---------- Offer cards ---------- */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.offer {
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #c9d4cb;
+  border-radius: 16px;
+  box-shadow: 0 18px 30px -24px rgba(11, 54, 43, .55);
+  animation: rise .5s var(--ease) both;
+}
+.band { padding: 18px 22px 20px; background: #e3eee8; border-bottom: 4px solid var(--accent); }
+.pill { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; color: #fff; background: var(--brand); }
+.value { margin-top: 12px; font-family: "Fraunces", Georgia, serif; font-size: 36px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; color: var(--brand-dark); }
+
+.body { flex: 1; display: flex; flex-direction: column; padding: 18px 22px 20px; }
+.body h3 { font-size: 17px; font-weight: 700; color: var(--ink); }
+.desc { margin-top: 6px; font-size: 14.5px; line-height: 1.55; color: #2c3d35; }
+.valid { margin-top: 10px; font-size: 13.5px; font-weight: 700; color: var(--brand); }
+
+.code-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: auto; padding-top: 14px; border-top: 1.5px dashed #9fb0a4;
+}
+.body .desc + .valid + .code-row { margin-top: 16px; }
+.code-row span { font-size: 14px; font-weight: 600; color: #2c3d35; }
+.code-row b { padding: 6px 14px; font-size: 14px; font-weight: 700; letter-spacing: .06em; color: var(--accent); background: var(--brand-dark); border-radius: 8px; }
+.code-row.none span { color: #17663f; font-weight: 700; }
+
+/* ---------- Side ---------- */
+.side { display: grid; gap: 16px; }
+.card {
+  padding: 22px 24px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #c9d4cb;
+  border-radius: 16px;
+}
+.card h2 { margin-bottom: 14px; font-family: "Fraunces", Georgia, serif; font-size: 21px; font-weight: 700; color: var(--brand-dark); }
+
+.rewards { color: var(--brand-dark); background: var(--accent); border-color: var(--accent); }
+.rewards h2 { margin-bottom: 8px; }
+.r-text { font-size: 15.5px; }
+.r-text b { font-size: 19px; }
+.dots { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 16px 0; }
+.dots li { aspect-ratio: 1; border-radius: 50%; border: 2.5px solid rgba(11, 54, 43, .5); }
+.dots li.on { background: var(--brand-dark); border-color: var(--brand-dark); }
+.r-note { font-size: 14.5px; line-height: 1.5; font-weight: 600; }
+
+.steps { list-style: none; display: grid; gap: 14px; }
+.steps li { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.steps li span {
+  flex: none; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 700; color: #fff; background: var(--brand);
+}
+
+.terms { list-style: none; display: grid; gap: 10px; }
+.terms li { position: relative; padding-left: 16px; font-size: 14.5px; line-height: 1.55; color: #2c3d35; }
+.terms li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .page { padding: 28px 16px 48px; }
+  .today { padding: 22px 20px; }
+  .ends { text-align: left; padding: 14px 0 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .35); width: 100%; }
+  .grid { grid-template-columns: 1fr; }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+  .tabs label { flex: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

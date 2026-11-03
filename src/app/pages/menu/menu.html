@@ -1,0 +1,185 @@
+<main class="page">
+  <!-- CSS-only category filter (no TypeScript needed) -->
+  <input class="filter" type="radio" name="cat" id="cat-all" checked aria-label="All" />
+  <input class="filter" type="radio" name="cat" id="cat-starters" aria-label="Starters" />
+  <input class="filter" type="radio" name="cat" id="cat-mains" aria-label="Mains" />
+  <input class="filter" type="radio" name="cat" id="cat-grills" aria-label="Grills" />
+  <input class="filter" type="radio" name="cat" id="cat-desserts" aria-label="Desserts" />
+  <input class="filter" type="radio" name="cat" id="cat-drinks" aria-label="Drinks" />
+
+  <header class="head">
+    <h1>Our menu</h1>
+    <p class="sub">
+      Cooked fresh every day. Please tell your server about any allergies before you order.
+    </p>
+  </header>
+
+  <nav class="tabs" aria-label="Menu categories">
+    <label for="cat-all">All</label>
+    <label for="cat-starters">Starters</label>
+    <label for="cat-mains">Mains</label>
+    <label for="cat-grills">Grills</label>
+    <label for="cat-desserts">Desserts</label>
+    <label for="cat-drinks">Drinks</label>
+  </nav>
+
+  <div class="menu">
+    <!-- Starters -->
+    <section class="group starters">
+      <h2>Starters</h2>
+      <ul class="items">
+        <li class="item">
+          <div class="row">
+            <b>Hummus</b><span class="dots"></span><span class="price">$4.00</span>
+          </div>
+          <p>Chickpeas, tahini, lemon and olive oil, served with warm bread.</p>
+          <span class="tag veg">Vegetarian</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Fattoush</b><span class="dots"></span><span class="price">$5.00</span>
+          </div>
+          <p>Crisp greens, tomato, radish and sumac dressing with toasted bread.</p>
+          <span class="tag veg">Vegetarian</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Mutabbal</b><span class="dots"></span><span class="price">$4.50</span>
+          </div>
+          <p>Smoked aubergine blended with tahini, garlic and pomegranate.</p>
+          <span class="tag veg">Vegetarian</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Kibbeh</b><span class="dots"></span><span class="price">$6.00</span>
+          </div>
+          <p>Fried bulgur shells filled with spiced lamb and pine nuts.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Mains -->
+    <section class="group mains">
+      <h2>Mains</h2>
+      <ul class="items">
+        <li class="item">
+          <div class="row">
+            <b>Mansaf</b><span class="dots"></span><span class="price">$14.00</span>
+          </div>
+          <p>Slow-cooked lamb in jameed sauce over rice, topped with almonds.</p>
+          <span class="tag pick">Chef's pick</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Lamb ouzi</b><span class="dots"></span><span class="price">$16.00</span>
+          </div>
+          <p>Tender lamb baked in pastry with spiced rice, peas and nuts.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Grilled sea bass</b><span class="dots"></span><span class="price">$18.00</span>
+          </div>
+          <p>Whole fillet with lemon butter, charred greens and lemon rice.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Maqluba</b><span class="dots"></span><span class="price">$12.00</span>
+          </div>
+          <p>Upside-down rice with chicken, aubergine and cauliflower.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Grills -->
+    <section class="group grills">
+      <h2>Grills</h2>
+      <ul class="items">
+        <li class="item">
+          <div class="row">
+            <b>Mixed grill</b><span class="dots"></span><span class="price">$17.00</span>
+          </div>
+          <p>Lamb kebab, chicken skewer and kofta with grilled vegetables.</p>
+          <span class="tag pick">Chef's pick</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Shish tawook</b><span class="dots"></span><span class="price">$13.00</span>
+          </div>
+          <p>Garlic and lemon marinated chicken with toum and fries.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Lamb chops</b><span class="dots"></span><span class="price">$21.00</span>
+          </div>
+          <p>Four chops with rosemary, grilled tomato and spiced potatoes.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Spicy kofta</b><span class="dots"></span><span class="price">$12.50</span>
+          </div>
+          <p>Hand-minced beef and lamb with chilli, parsley and onion.</p>
+          <span class="tag hot">Spicy</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Desserts -->
+    <section class="group desserts">
+      <h2>Desserts</h2>
+      <ul class="items">
+        <li class="item">
+          <div class="row">
+            <b>Knafeh</b><span class="dots"></span><span class="price">$6.00</span>
+          </div>
+          <p>Warm cheese under crisp semolina, finished with sugar syrup.</p>
+          <span class="tag veg">Vegetarian</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Baklava</b><span class="dots"></span><span class="price">$5.00</span>
+          </div>
+          <p>Layers of filo with pistachio and honey.</p>
+          <span class="tag veg">Vegetarian</span>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Umm Ali</b><span class="dots"></span><span class="price">$5.50</span>
+          </div>
+          <p>Baked pastry pudding with milk, cream, nuts and raisins.</p>
+          <span class="tag veg">Vegetarian</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Drinks -->
+    <section class="group drinks">
+      <h2>Drinks</h2>
+      <ul class="items">
+        <li class="item">
+          <div class="row">
+            <b>Mint lemonade</b><span class="dots"></span><span class="price">$3.50</span>
+          </div>
+          <p>Fresh lemon blended with mint leaves and ice.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Arabic coffee</b><span class="dots"></span><span class="price">$2.50</span>
+          </div>
+          <p>Light roast with cardamom, served in a small pot.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Jallab</b><span class="dots"></span><span class="price">$4.00</span>
+          </div>
+          <p>Date and grape molasses with rose water, pine nuts and raisins.</p>
+        </li>
+        <li class="item">
+          <div class="row">
+            <b>Fresh orange juice</b><span class="dots"></span><span class="price">$4.00</span>
+          </div>
+          <p>Squeezed to order.</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>

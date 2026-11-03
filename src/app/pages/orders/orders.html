@@ -1,0 +1,126 @@
+<main class="page">
+  <header class="head">
+    <div>
+      <h1>Orders</h1>
+      <p class="sub">Everything the kitchen is working on, and what has gone out tonight.</p>
+    </div>
+    <span class="today"><b>128</b> orders today</span>
+  </header>
+
+  <div class="layout">
+    <section class="left" aria-label="Orders list">
+      <!-- CSS-only status filter (no TypeScript needed) -->
+      <input class="filter" type="radio" name="status" id="f-all" checked aria-label="All" />
+      <input class="filter" type="radio" name="status" id="f-received" aria-label="Received" />
+      <input class="filter" type="radio" name="status" id="f-cooking" aria-label="In the kitchen" />
+      <input class="filter" type="radio" name="status" id="f-served" aria-label="Served" />
+      <input class="filter" type="radio" name="status" id="f-cancelled" aria-label="Cancelled" />
+
+      <nav class="tabs" aria-label="Order status">
+        <label for="f-all">All <span>8</span></label>
+        <label for="f-received">Received <span>3</span></label>
+        <label for="f-cooking">In the kitchen <span>1</span></label>
+        <label for="f-served">Served <span>3</span></label>
+        <label for="f-cancelled">Cancelled <span>1</span></label>
+      </nav>
+
+      <ul class="orders">
+        <li class="order received">
+          <div class="who"><b>#2484</b><small>Takeaway · Sara M.</small></div>
+          <p class="what">1× Shish tawook, 1× Fattoush, 1× Mint lemonade</p>
+          <time>8:42 PM</time>
+          <span class="total">$24.50</span>
+          <span class="status received">Received</span>
+        </li>
+        <li class="order received">
+          <div class="who"><b>#2483</b><small>Delivery · Khaled A.</small></div>
+          <p class="what">2× Mansaf, 1× Knafeh</p>
+          <time>8:35 PM</time>
+          <span class="total">$34.00</span>
+          <span class="status received">Received</span>
+        </li>
+        <li class="order received">
+          <div class="who"><b>#2482</b><small>Dine-in · Table 3</small></div>
+          <p class="what">2× Mixed grill, 1× Hummus</p>
+          <time>8:20 PM</time>
+          <span class="total">$38.00</span>
+          <span class="status received">Received</span>
+        </li>
+        <li class="order cooking selected">
+          <div class="who"><b>#2481</b><small>Dine-in · Table 7</small></div>
+          <p class="what">1× Grilled sea bass, 1× Lemon rice</p>
+          <time>8:12 PM</time>
+          <span class="total">$23.10</span>
+          <span class="status cooking">In the kitchen</span>
+        </li>
+        <li class="order served">
+          <div class="who"><b>#2480</b><small>Dine-in · Table 12</small></div>
+          <p class="what">1× Lamb ouzi, 2× Fattoush</p>
+          <time>7:58 PM</time>
+          <span class="total">$26.00</span>
+          <span class="status served">Served</span>
+        </li>
+        <li class="order served">
+          <div class="who"><b>#2479</b><small>Delivery · Dina H.</small></div>
+          <p class="what">2× Mansaf, 1× Knafeh</p>
+          <time>7:40 PM</time>
+          <span class="total">$34.00</span>
+          <span class="status served">Served</span>
+        </li>
+        <li class="order served">
+          <div class="who"><b>#2478</b><small>Dine-in · Table 5</small></div>
+          <p class="what">1× Mixed grill, 1× Shish tawook, 2× Jallab</p>
+          <time>7:22 PM</time>
+          <span class="total">$38.00</span>
+          <span class="status served">Served</span>
+        </li>
+        <li class="order cancelled">
+          <div class="who"><b>#2477</b><small>Takeaway · Omar K.</small></div>
+          <p class="what">1× Shish tawook</p>
+          <time>7:05 PM</time>
+          <span class="total">$13.00</span>
+          <span class="status cancelled">Cancelled</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Receipt for the selected order -->
+    <aside class="receipt-wrap" aria-label="Order #2481 details">
+      <div class="receipt">
+        <div class="r-head">
+          <h2>Order #2481</h2>
+          <span class="status cooking">In the kitchen</span>
+        </div>
+        <p class="r-meta">Dine-in · Table 7 · 8:12 PM</p>
+
+        <ol class="progress">
+          <li class="done"><span></span>Received</li>
+          <li class="now"><span></span>In the kitchen</li>
+          <li><span></span>Served</li>
+        </ol>
+
+        <ul class="lines">
+          <li><span>1× Grilled sea bass</span><b>$18.00</b></li>
+          <li><span>1× Lemon rice</span><b>$3.00</b></li>
+        </ul>
+
+        <dl class="sums">
+          <div>
+            <dt>Subtotal</dt>
+            <dd>$21.00</dd>
+          </div>
+          <div>
+            <dt>Service (10%)</dt>
+            <dd>$2.10</dd>
+          </div>
+          <div class="grand">
+            <dt>Total</dt>
+            <dd>$23.10</dd>
+          </div>
+        </dl>
+
+        <p class="r-note">Pay at the table. Ready in about 12 minutes.</p>
+      </div>
+    </aside>
+  </div>
+</main>

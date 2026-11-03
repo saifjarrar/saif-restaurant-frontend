@@ -1,0 +1,158 @@
+<main class="page">
+  <header class="head">
+    <h1>Offers</h1>
+    <p class="sub">
+      Pick an offer, add the code when you order, and the discount shows on your bill.
+    </p>
+  </header>
+
+  <!-- Today's offer -->
+  <section class="today" aria-label="Today's offer">
+    <div>
+      <span class="label">Today only</span>
+      <h2>2-for-1 on all desserts</h2>
+      <p>Order any dessert after 9:00 PM and get a second one free. Dine-in only.</p>
+    </div>
+    <div class="ends">
+      <small>Ends tonight</small>
+      <b>11:00 PM</b>
+    </div>
+  </section>
+
+  <div class="layout">
+    <!-- Offers list -->
+    <section class="left" aria-label="All offers">
+      <!-- CSS-only filter (no TypeScript needed) -->
+      <input class="filter" type="radio" name="type" id="o-all" checked aria-label="All" />
+      <input class="filter" type="radio" name="type" id="o-dine" aria-label="Dine-in" />
+      <input class="filter" type="radio" name="type" id="o-delivery" aria-label="Delivery" />
+      <input class="filter" type="radio" name="type" id="o-takeaway" aria-label="Takeaway" />
+
+      <nav class="tabs" aria-label="Offer type">
+        <label for="o-all">All offers</label>
+        <label for="o-dine">Dine-in</label>
+        <label for="o-delivery">Delivery</label>
+        <label for="o-takeaway">Takeaway</label>
+      </nav>
+
+      <div class="grid">
+        <article class="offer delivery takeaway">
+          <div class="band">
+            <span class="pill">Delivery and takeaway</span>
+            <p class="value">15% off</p>
+          </div>
+          <div class="body">
+            <h3>Your first order</h3>
+            <p class="desc">New to Safe Restaurant? Get 15% off your first online order.</p>
+            <p class="valid">Ends 30 Nov</p>
+            <div class="code-row"><span>Use code</span><b>WELCOME15</b></div>
+          </div>
+        </article>
+
+        <article class="offer dine">
+          <div class="band">
+            <span class="pill">Dine-in</span>
+            <p class="value">Free dessert</p>
+          </div>
+          <div class="body">
+            <h3>Something sweet</h3>
+            <p class="desc">Choose a knafeh or baklava free with any main course.</p>
+            <p class="valid">Sunday to Thursday</p>
+            <div class="code-row"><span>Use code</span><b>SWEET</b></div>
+          </div>
+        </article>
+
+        <article class="offer dine takeaway">
+          <div class="band">
+            <span class="pill">Dine-in and takeaway</span>
+            <p class="value">$9 lunch</p>
+          </div>
+          <div class="body">
+            <h3>Lunch combo</h3>
+            <p class="desc">Any lunch main plus a drink of your choice.</p>
+            <p class="valid">Every day, 12 to 4 PM</p>
+            <div class="code-row none"><span>No code needed</span></div>
+          </div>
+        </article>
+
+        <article class="offer delivery">
+          <div class="band">
+            <span class="pill">Delivery</span>
+            <p class="value">Free delivery</p>
+          </div>
+          <div class="body">
+            <h3>Delivery on us</h3>
+            <p class="desc">Order $25 or more and we cover the delivery fee.</p>
+            <p class="valid">Ends 15 Dec</p>
+            <div class="code-row"><span>Use code</span><b>SHIPFREE</b></div>
+          </div>
+        </article>
+
+        <article class="offer dine">
+          <div class="band">
+            <span class="pill">Dine-in</span>
+            <p class="value">Kids eat free</p>
+          </div>
+          <div class="body">
+            <h3>Little guests</h3>
+            <p class="desc">One free kids' meal with every adult main course.</p>
+            <p class="valid">Friday and Saturday</p>
+            <div class="code-row none"><span>No code needed</span></div>
+          </div>
+        </article>
+
+        <article class="offer dine">
+          <div class="band">
+            <span class="pill">Dine-in</span>
+            <p class="value">$39 for four</p>
+          </div>
+          <div class="body">
+            <h3>Family feast</h3>
+            <p class="desc">Mansaf, fattoush, hummus and knafeh to share, in the family section.</p>
+            <p class="valid">Friday and Saturday</p>
+            <div class="code-row none"><span>No code needed</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Side -->
+    <aside class="side">
+      <section class="card rewards">
+        <h2>Safe Rewards</h2>
+        <p class="r-text"><b>7 of 10</b> visits done</p>
+        <ol class="dots" aria-label="7 of 10 visits">
+          <li class="on"></li>
+          <li class="on"></li>
+          <li class="on"></li>
+          <li class="on"></li>
+          <li class="on"></li>
+          <li class="on"></li>
+          <li class="on"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+        <p class="r-note">3 more visits and your next main course is free.</p>
+      </section>
+
+      <section class="card">
+        <h2>How to use an offer</h2>
+        <ol class="steps">
+          <li><span>1</span>Pick the offer you want.</li>
+          <li><span>2</span>Enter the code online, or tell your server.</li>
+          <li><span>3</span>See the discount on your bill.</li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>Good to know</h2>
+        <ul class="terms">
+          <li>One offer per order, unless it says otherwise.</li>
+          <li>Offers can change or end without notice.</li>
+          <li>Delivery offers apply inside our delivery area only.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>

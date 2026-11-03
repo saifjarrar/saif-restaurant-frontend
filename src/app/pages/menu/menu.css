@@ -1,0 +1,97 @@
+
+
+:host {
+  
+
+  display: block;
+  min-height: calc(100vh - 72px);
+  
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.page { position: relative; width: min(1060px, 100%); margin: 0 auto; padding: 40px 28px 64px; }
+
+/* Radios drive the category filter, no JavaScript */
+.filter { position: absolute; opacity: 0; pointer-events: none; }
+
+/* Header */
+.head { margin-bottom: 26px; }
+.head h1 { font-family: "Fraunces", Georgia, serif; font-size: clamp(34px, 4.5vw, 46px); font-weight: 700; letter-spacing: -.02em; color: var(--brand-dark); }
+.sub { margin-top: 8px; max-width: 54ch; font-size: 15px; line-height: 1.6; color: var(--muted); }
+
+/* Category tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+.tabs label {
+  padding: 10px 18px;
+  font-size: 14.5px; font-weight: 600;
+  color: var(--brand-dark);
+  background: #fffefb;
+  border: 1.5px solid var(--line);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s, transform .25s var(--ease);
+}
+.tabs label:hover { border-color: var(--brand); transform: translateY(-1px); }
+
+#cat-all:checked       ~ .tabs label[for="cat-all"],
+#cat-starters:checked  ~ .tabs label[for="cat-starters"],
+#cat-mains:checked     ~ .tabs label[for="cat-mains"],
+#cat-grills:checked    ~ .tabs label[for="cat-grills"],
+#cat-desserts:checked  ~ .tabs label[for="cat-desserts"],
+#cat-drinks:checked    ~ .tabs label[for="cat-drinks"] {
+  color: #fff; background: var(--brand); border-color: var(--brand);
+}
+
+#cat-all:focus-visible       ~ .tabs label[for="cat-all"],
+#cat-starters:focus-visible  ~ .tabs label[for="cat-starters"],
+#cat-mains:focus-visible     ~ .tabs label[for="cat-mains"],
+#cat-grills:focus-visible    ~ .tabs label[for="cat-grills"],
+#cat-desserts:focus-visible  ~ .tabs label[for="cat-desserts"],
+#cat-drinks:focus-visible    ~ .tabs label[for="cat-drinks"] {
+  outline: 3px solid rgba(240, 168, 44, .7); outline-offset: 2px;
+}
+
+/* Filtering */
+#cat-starters:checked  ~ .menu .group:not(.starters),
+#cat-mains:checked     ~ .menu .group:not(.mains),
+#cat-grills:checked    ~ .menu .group:not(.grills),
+#cat-desserts:checked  ~ .menu .group:not(.desserts),
+#cat-drinks:checked    ~ .menu .group:not(.drinks) { display: none; }
+
+/* Menu groups */
+.menu { display: grid; gap: 44px; }
+.group { animation: rise .6s var(--ease) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.group h2 {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 22px;
+  font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 700; letter-spacing: -.01em;
+  color: var(--brand-dark);
+}
+.group h2::after { content: ""; flex: 1; height: 3px; border-radius: 3px; background: repeating-linear-gradient(90deg, var(--accent) 0 14px, transparent 14px 24px); opacity: .8; }
+
+.items { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 56px; }
+
+/* Item, printed-menu style */
+.row { display: flex; align-items: baseline; gap: 10px; }
+.row b { font-size: 17px; font-weight: 700; }
+.dots { flex: 1; min-width: 20px; border-bottom: 2px dotted #b9c4ba; transform: translateY(-4px); }
+.price { font-family: "Fraunces", Georgia, serif; font-size: 18px; font-weight: 700; color: var(--brand); }
+.item p { margin-top: 5px; max-width: 42ch; font-size: 14px; line-height: 1.55; color: var(--muted); }
+
+.tag { display: inline-block; margin-top: 9px; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; }
+.tag.veg  { color: #1d6e4a; background: #d9f2e5; }
+.tag.hot  { color: #8f2a20; background: #fbe0dc; }
+.tag.pick { color: #7a4a00; background: #fde9bf; }
+
+/* Responsive */
+@media (max-width: 760px) {
+  .page { padding: 28px 16px 48px; }
+  .items { grid-template-columns: 1fr; gap: 22px; }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+  .tabs label { flex: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
