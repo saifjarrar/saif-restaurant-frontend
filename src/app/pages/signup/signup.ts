@@ -15,10 +15,20 @@ export class Signup {
   signupform: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.minLength(6), Validators.required]),
+    checkbox: new FormControl(false, [Validators.requiredTrue]),
   });
+  get checkbox() {
+    return this.signupform.get('checkbox');
+  }
   onSignup() {
+    if (this.signupform.invalid) {
+      this.signupform.markAllAsTouched();
+      return;
+    }
+
     const signupvalue = this.signupform.value;
-    this.http.post('https://localhost:7110/api/Auth/register', signupvalue).subscribe({
+
+    this.http.post('https://localhost:7118/api/Auth/register', signupvalue).subscribe({
       next: (response: any) => {
         if (response.result) {
           alert('Signup success');
