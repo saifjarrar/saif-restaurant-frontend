@@ -2,14 +2,13 @@
   <header class="head">
     <div>
       <h1>Today at Saif Restaurant</h1>
-      <p class="sub">Monday, 2 November</p>
+      <p class="sub">{{ date | date: 'fullDate' }}</p>
     </div>
     <span class="open"><i></i>Kitchen open until 11:00 PM</span>
   </header>
 
-  <!-- Summary strip -->
   <section class="strip" aria-label="Summary">
-    @for (info of restaurantinfo; track info.title) {
+    @for (info of restaurantinfo(); track info.title) {
       <div class="stat">
         <span class="label">{{ info.title }}</span>
         <b>{{ info.value }}</b>
@@ -18,32 +17,34 @@
     }
   </section>
 
-  <!-- Kitchen tickets -->
   <section class="block">
     <div class="block-head">
       <h2>On the kitchen board</h2>
-      <span class="count">{{ ordertickets.length }} orders</span>
+      <span class="count">{{ ordertickets().length }} orders</span>
     </div>
 
     <div class="tickets">
-      @for (order of ordertickets; track order.ordernum) {
+      @for (order of ordertickets(); track order.id) {
         <article
           class="ticket"
-          [class.received]="order.orderstatus === 'Received'"
-          [class.cooking]="order.orderstatus === 'In The Kitchen'"
-          [class.served]="order.orderstatus === 'Served'"
+          [class.received]="order.orderstatus.toLowerCase() == 'received'"
+          [class.cooking]="order.orderstatus.toLowerCase() == 'in the kitchen'"
+          [class.served]="order.orderstatus.toLowerCase() == 'served'"
         >
           <div class="t-top">
             <b>{{ order.ordernum }}</b>
-            @if (order.orderstatus === 'Received') {
+
+            @if (order.orderstatus.toLowerCase() == 'received') {
               <span class="status received">{{ order.orderstatus }}</span>
-            } @else if (order.orderstatus === 'In The Kitchen') {
+            } @else if (order.orderstatus.toLowerCase() == 'in the kitchen') {
               <span class="status cooking">{{ order.orderstatus }}</span>
-            } @else if (order.orderstatus === 'Served') {
+            } @else if (order.orderstatus.toLowerCase() == 'served') {
               <span class="status served">{{ order.orderstatus }}</span>
             }
           </div>
+
           <p class="t-table">{{ order.table }}</p>
+
           <ul>
             @for (dish of order.dishes; track dish.name) {
               <li>
@@ -51,18 +52,20 @@
               </li>
             }
           </ul>
-          @if (order.orderstatus !== 'Served') {
+
+          @if (order.orderstatus.toLowerCase() != 'served') {
             <p class="t-time">Ready in about {{ order.readytime }}</p>
           } @else {
             <p class="t-time">Served and enjoyed</p>
           }
-          @if (order.orderstatus === 'In The Kitchen') {
-            <button class="t-btn" type="button" (click)="markAs(order.ordernum)">
-              Mark as Served
-            </button>
-          } @else if (order.orderstatus === 'Received') {
-            <button class="t-btn" type="button" (click)="markAs(order.ordernum)">
-              Start Cooking
+
+          @if (order.orderstatus.toLowerCase() == 'in the kitchen') {
+            <button class="t-btn" type="button" (click)="markAs(order.id)">Mark as Served</button>
+          } @else if (order.orderstatus.toLowerCase() == 'received') {
+            <button class="t-btn" type="button" (click)="markAs(order.id)">Start Cooking</button>
+          } @else if (order.orderstatus.toLowerCase() == 'served') {
+            <button class="t-btn" type="button" (click)="returnToReceived(order.id)">
+              Return to Received
             </button>
           }
         </article>
@@ -71,27 +74,25 @@
   </section>
 
   <div class="two">
-    <!-- Reservations -->
     <section class="block">
       <div class="block-head">
         <h2>Tonight's reservations</h2>
-        <span class="count">{{ tonightreservations.length }} of 24</span>
+        <span class="count">{{ tonightreservations().length }} of 24</span>
       </div>
 
       <ol class="slots">
-        @for (reservation of tonightreservations; track reservation.time) {
+        @for (reservation of tonightreservations(); track reservation.time) {
           <li>
             <time>{{ reservation.time }}</time>
             <div>
-              <b>{{ reservation.name }}</b
-              ><small>{{ reservation.guests }} guests · {{ reservation.table }}</small>
+              <b>{{ reservation.name }}</b>
+              <small>{{ reservation.guests }} guests · {{ reservation.table }}</small>
             </div>
           </li>
         }
       </ol>
     </section>
 
-    <!-- Top dishes -->
     <section class="block">
       <div class="block-head">
         <h2>Most ordered today</h2>
@@ -99,13 +100,15 @@
       </div>
 
       <ul class="dishes">
-        @for (dish of mostordered; track dish.name) {
+        @for (dish of mostordered(); track dish.name) {
           <li>
             <div class="d-row">
-              <b>{{ dish.name }}</b
-              ><span>{{ dish.quantity }}</span>
+              <b>{{ dish.name }}</b>
+              <span>{{ dish.quantity }}</span>
             </div>
-            <div class="bar"><i [style.--w]="barWidth(dish.quantity) + '%'"></i></div>
+            <div class="bar">
+              <i [style.--w]="barWidth(dish.quantity) + '%'"></i>
+            </div>
           </li>
         }
       </ul>

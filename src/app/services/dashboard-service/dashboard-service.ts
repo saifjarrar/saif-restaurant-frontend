@@ -56,4 +56,8 @@ export class DashboardService {
   advanceOrder(id: number): Observable<OrderTicket> {
     return this.http.put<OrderTicket>(`${this.baseUrl}/orders/${id}/advance`, {});
   }
+
+  returnOrder(id: number): Observable<OrderTicket> {
+    return this.http.put<OrderTicket>(`${this.baseUrl}/orders/${id}/return`, {});
+  }
 }
