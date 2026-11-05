@@ -28,14 +28,24 @@
     <section class="group starters">
       <h2>Starters</h2>
       <ul class="items">
-        @for (starter of menu.starters.items; track menu.starters.items.indexOf(starter)) {
+        @for (starter of menu.starters.items; track starter.name) {
           <li class="item">
-            <div class="row">
-              <b>{{ starter.name }}</b
-              ><span class="dots"></span><span class="price">${{ starter.price.toFixed(2) }}</span>
+            @if (starter.imageUrl) {
+              <img class="photo" [src]="starter.imageUrl" [alt]="starter.name" loading="lazy" />
+            } @else {
+              <div class="photo empty" aria-hidden="true"></div>
+            }
+            <div class="info">
+              <div class="row">
+                <b>{{ starter.name }}</b
+                ><span class="dots"></span
+                ><span class="price">${{ starter.price.toFixed(2) }}</span>
+              </div>
+              <p>{{ starter.description }}</p>
+              <span [class]="'tag ' + starter.category.toLowerCase()">{{
+                starter.category | titlecase
+              }}</span>
             </div>
-            <p>{{ starter.description }}</p>
-            <span class="tag veg">{{ starter.category | titlecase }}</span>
           </li>
         }
       </ul>
@@ -45,14 +55,23 @@
     <section class="group mains">
       <h2>Mains</h2>
       <ul class="items">
-        @for (main of menu.mains.items; track menu.mains.items.indexOf(main)) {
+        @for (main of menu.mains.items; track main.name) {
           <li class="item">
-            <div class="row">
-              <b>{{ main.name }}</b
-              ><span class="dots"></span><span class="price">${{ main.price.toFixed(2) }}</span>
+            @if (main.imageUrl) {
+              <img class="photo" [src]="main.imageUrl" [alt]="main.name" loading="lazy" />
+            } @else {
+              <div class="photo empty" aria-hidden="true"></div>
+            }
+            <div class="info">
+              <div class="row">
+                <b>{{ main.name }}</b
+                ><span class="dots"></span><span class="price">${{ main.price.toFixed(2) }}</span>
+              </div>
+              <p>{{ main.description }}</p>
+              <span [class]="'tag ' + main.category.toLowerCase()">{{
+                main.category | titlecase
+              }}</span>
             </div>
-            <p>{{ main.description }}</p>
-            <span class="tag veg">{{ main.category | titlecase }}</span>
           </li>
         }
       </ul>
@@ -62,14 +81,23 @@
     <section class="group grills">
       <h2>Grills</h2>
       <ul class="items">
-        @for (grill of menu.grills.items; track menu.grills.items.indexOf(grill)) {
+        @for (grill of menu.grills.items; track grill.name) {
           <li class="item">
-            <div class="row">
-              <b>{{ grill.name }}</b
-              ><span class="dots"></span><span class="price">${{ grill.price.toFixed(2) }}</span>
+            @if (grill.imageUrl) {
+              <img class="photo" [src]="grill.imageUrl" [alt]="grill.name" loading="lazy" />
+            } @else {
+              <div class="photo empty" aria-hidden="true"></div>
+            }
+            <div class="info">
+              <div class="row">
+                <b>{{ grill.name }}</b
+                ><span class="dots"></span><span class="price">${{ grill.price.toFixed(2) }}</span>
+              </div>
+              <p>{{ grill.description }}</p>
+              <span [class]="'tag ' + grill.category.toLowerCase()">{{
+                grill.category | titlecase
+              }}</span>
             </div>
-            <p>{{ grill.description }}</p>
-            <span class="tag {{ grill.category }}">{{ grill.category | titlecase }}</span>
           </li>
         }
       </ul>
@@ -79,14 +107,24 @@
     <section class="group desserts">
       <h2>Desserts</h2>
       <ul class="items">
-        @for (dessert of menu.desserts.items; track menu.desserts.items.indexOf(dessert)) {
+        @for (dessert of menu.desserts.items; track dessert.name) {
           <li class="item">
-            <div class="row">
-              <b>{{ dessert.name }}</b
-              ><span class="dots"></span><span class="price">${{ dessert.price.toFixed(2) }}</span>
+            @if (dessert.imageUrl) {
+              <img class="photo" [src]="dessert.imageUrl" [alt]="dessert.name" loading="lazy" />
+            } @else {
+              <div class="photo empty" aria-hidden="true"></div>
+            }
+            <div class="info">
+              <div class="row">
+                <b>{{ dessert.name }}</b
+                ><span class="dots"></span
+                ><span class="price">${{ dessert.price.toFixed(2) }}</span>
+              </div>
+              <p>{{ dessert.description }}</p>
+              <span [class]="'tag ' + dessert.category.toLowerCase()">{{
+                dessert.category | titlecase
+              }}</span>
             </div>
-            <p>{{ dessert.description }}</p>
-            <span class="tag veg">{{ dessert.category | titlecase }}</span>
           </li>
         }
       </ul>
@@ -96,13 +134,20 @@
     <section class="group drinks">
       <h2>Drinks</h2>
       <ul class="items">
-        @for (drink of menu.drinks.items; track menu.drinks.items.indexOf(drink)) {
+        @for (drink of menu.drinks.items; track drink.name) {
           <li class="item">
-            <div class="row">
-              <b>{{ drink.name }}</b
-              ><span class="dots"></span><span class="price">${{ drink.price.toFixed(2) }}</span>
+            @if (drink.imageUrl) {
+              <img class="photo" [src]="drink.imageUrl" [alt]="drink.name" loading="lazy" />
+            } @else {
+              <div class="photo empty" aria-hidden="true"></div>
+            }
+            <div class="info">
+              <div class="row">
+                <b>{{ drink.name }}</b
+                ><span class="dots"></span><span class="price">${{ drink.price.toFixed(2) }}</span>
+              </div>
+              <p>{{ drink.description }}</p>
             </div>
-            <p>{{ drink.description }}</p>
           </li>
         }
       </ul>
