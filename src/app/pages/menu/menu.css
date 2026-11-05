@@ -17,7 +17,7 @@
 /* Header */
 .head { margin-bottom: 26px; }
 .head h1 { font-family: "Fraunces", Georgia, serif; font-size: clamp(34px, 4.5vw, 46px); font-weight: 700; letter-spacing: -.02em; color: var(--brand-dark); }
-.sub { margin-top: 8px; max-width: 54ch; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.sub { margin-top: 8px; max-width: 54ch; font-size: 15px; line-height: 1.6; color:#2c3d35; }
 
 /* Category tabs */
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
@@ -78,7 +78,7 @@
 .row b { font-size: 17px; font-weight: 700; }
 .dots { flex: 1; min-width: 20px; border-bottom: 2px dotted #b9c4ba; transform: translateY(-4px); }
 .price { font-family: "Fraunces", Georgia, serif; font-size: 18px; font-weight: 700; color: var(--brand); }
-.item p { margin-top: 5px; max-width: 42ch; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.item p { margin-top: 5px; max-width: 42ch; font-size: 14px; line-height: 1.55; color: #2c3d35; }
 
 .tag { display: inline-block; margin-top: 9px; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; }
 .tag.veg  { color: #1d6e4a; background: #d9f2e5; }

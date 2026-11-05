@@ -28,33 +28,16 @@
     <section class="group starters">
       <h2>Starters</h2>
       <ul class="items">
-        <li class="item">
-          <div class="row">
-            <b>Hummus</b><span class="dots"></span><span class="price">$4.00</span>
-          </div>
-          <p>Chickpeas, tahini, lemon and olive oil, served with warm bread.</p>
-          <span class="tag veg">Vegetarian</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Fattoush</b><span class="dots"></span><span class="price">$5.00</span>
-          </div>
-          <p>Crisp greens, tomato, radish and sumac dressing with toasted bread.</p>
-          <span class="tag veg">Vegetarian</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Mutabbal</b><span class="dots"></span><span class="price">$4.50</span>
-          </div>
-          <p>Smoked aubergine blended with tahini, garlic and pomegranate.</p>
-          <span class="tag veg">Vegetarian</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Kibbeh</b><span class="dots"></span><span class="price">$6.00</span>
-          </div>
-          <p>Fried bulgur shells filled with spiced lamb and pine nuts.</p>
-        </li>
+        @for (starter of menu.starters.items; track menu.starters.items.indexOf(starter)) {
+          <li class="item">
+            <div class="row">
+              <b>{{ starter.name }}</b
+              ><span class="dots"></span><span class="price">${{ starter.price.toFixed(2) }}</span>
+            </div>
+            <p>{{ starter.description }}</p>
+            <span class="tag veg">{{ starter.category | titlecase }}</span>
+          </li>
+        }
       </ul>
     </section>
 
@@ -62,31 +45,16 @@
     <section class="group mains">
       <h2>Mains</h2>
       <ul class="items">
-        <li class="item">
-          <div class="row">
-            <b>Mansaf</b><span class="dots"></span><span class="price">$14.00</span>
-          </div>
-          <p>Slow-cooked lamb in jameed sauce over rice, topped with almonds.</p>
-          <span class="tag pick">Chef's pick</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Lamb ouzi</b><span class="dots"></span><span class="price">$16.00</span>
-          </div>
-          <p>Tender lamb baked in pastry with spiced rice, peas and nuts.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Grilled sea bass</b><span class="dots"></span><span class="price">$18.00</span>
-          </div>
-          <p>Whole fillet with lemon butter, charred greens and lemon rice.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Maqluba</b><span class="dots"></span><span class="price">$12.00</span>
-          </div>
-          <p>Upside-down rice with chicken, aubergine and cauliflower.</p>
-        </li>
+        @for (main of menu.mains.items; track menu.mains.items.indexOf(main)) {
+          <li class="item">
+            <div class="row">
+              <b>{{ main.name }}</b
+              ><span class="dots"></span><span class="price">${{ main.price.toFixed(2) }}</span>
+            </div>
+            <p>{{ main.description }}</p>
+            <span class="tag veg">{{ main.category | titlecase }}</span>
+          </li>
+        }
       </ul>
     </section>
 
@@ -94,32 +62,16 @@
     <section class="group grills">
       <h2>Grills</h2>
       <ul class="items">
-        <li class="item">
-          <div class="row">
-            <b>Mixed grill</b><span class="dots"></span><span class="price">$17.00</span>
-          </div>
-          <p>Lamb kebab, chicken skewer and kofta with grilled vegetables.</p>
-          <span class="tag pick">Chef's pick</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Shish tawook</b><span class="dots"></span><span class="price">$13.00</span>
-          </div>
-          <p>Garlic and lemon marinated chicken with toum and fries.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Lamb chops</b><span class="dots"></span><span class="price">$21.00</span>
-          </div>
-          <p>Four chops with rosemary, grilled tomato and spiced potatoes.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Spicy kofta</b><span class="dots"></span><span class="price">$12.50</span>
-          </div>
-          <p>Hand-minced beef and lamb with chilli, parsley and onion.</p>
-          <span class="tag hot">Spicy</span>
-        </li>
+        @for (grill of menu.grills.items; track menu.grills.items.indexOf(grill)) {
+          <li class="item">
+            <div class="row">
+              <b>{{ grill.name }}</b
+              ><span class="dots"></span><span class="price">${{ grill.price.toFixed(2) }}</span>
+            </div>
+            <p>{{ grill.description }}</p>
+            <span class="tag {{ grill.category }}">{{ grill.category | titlecase }}</span>
+          </li>
+        }
       </ul>
     </section>
 
@@ -127,27 +79,16 @@
     <section class="group desserts">
       <h2>Desserts</h2>
       <ul class="items">
-        <li class="item">
-          <div class="row">
-            <b>Knafeh</b><span class="dots"></span><span class="price">$6.00</span>
-          </div>
-          <p>Warm cheese under crisp semolina, finished with sugar syrup.</p>
-          <span class="tag veg">Vegetarian</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Baklava</b><span class="dots"></span><span class="price">$5.00</span>
-          </div>
-          <p>Layers of filo with pistachio and honey.</p>
-          <span class="tag veg">Vegetarian</span>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Umm Ali</b><span class="dots"></span><span class="price">$5.50</span>
-          </div>
-          <p>Baked pastry pudding with milk, cream, nuts and raisins.</p>
-          <span class="tag veg">Vegetarian</span>
-        </li>
+        @for (dessert of menu.desserts.items; track menu.desserts.items.indexOf(dessert)) {
+          <li class="item">
+            <div class="row">
+              <b>{{ dessert.name }}</b
+              ><span class="dots"></span><span class="price">${{ dessert.price.toFixed(2) }}</span>
+            </div>
+            <p>{{ dessert.description }}</p>
+            <span class="tag veg">{{ dessert.category | titlecase }}</span>
+          </li>
+        }
       </ul>
     </section>
 
@@ -155,30 +96,15 @@
     <section class="group drinks">
       <h2>Drinks</h2>
       <ul class="items">
-        <li class="item">
-          <div class="row">
-            <b>Mint lemonade</b><span class="dots"></span><span class="price">$3.50</span>
-          </div>
-          <p>Fresh lemon blended with mint leaves and ice.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Arabic coffee</b><span class="dots"></span><span class="price">$2.50</span>
-          </div>
-          <p>Light roast with cardamom, served in a small pot.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Jallab</b><span class="dots"></span><span class="price">$4.00</span>
-          </div>
-          <p>Date and grape molasses with rose water, pine nuts and raisins.</p>
-        </li>
-        <li class="item">
-          <div class="row">
-            <b>Fresh orange juice</b><span class="dots"></span><span class="price">$4.00</span>
-          </div>
-          <p>Squeezed to order.</p>
-        </li>
+        @for (drink of menu.drinks.items; track menu.drinks.items.indexOf(drink)) {
+          <li class="item">
+            <div class="row">
+              <b>{{ drink.name }}</b
+              ><span class="dots"></span><span class="price">${{ drink.price.toFixed(2) }}</span>
+            </div>
+            <p>{{ drink.description }}</p>
+          </li>
+        }
       </ul>
     </section>
   </div>
