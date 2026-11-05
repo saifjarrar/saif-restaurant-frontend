@@ -32,7 +32,7 @@ export class Login {
       return;
     }
 
-    this.http.post('https://localhost:7110/api/Auth/login', this.userform.value).subscribe({
+    this.http.post('https://localhost:7118/api/Auth/login', this.userform.value).subscribe({
       next: (response: any) => {
         if (response.result) {
           this.router.navigateByUrl('/layout/dashboard');
