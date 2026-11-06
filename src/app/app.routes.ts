@@ -8,12 +8,17 @@ import { Menu } from './pages/menu/menu';
 import { Offers } from './pages/offers/offers';
 import { Contact } from './pages/contact/contact';
 import { Orders } from './pages/orders/orders';
+import { Landing } from './pages/landing/landing';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'landing',
     pathMatch: 'full',
+  },
+  {
+    path: 'landing',
+    component: Landing,
   },
   {
     path: 'login',
