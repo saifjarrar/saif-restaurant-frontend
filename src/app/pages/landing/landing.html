@@ -1,0 +1,176 @@
+<div class="landing">
+  <!-- Top bar -->
+  <header class="top">
+    <a class="brand" href="/" aria-label="Saif Restaurant home">
+      <span class="mark">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
+          <path d="M8.5 12l2.5 2.5 4.5-5" />
+        </svg>
+      </span>
+      <span class="brand-name">Saif Restaurant</span>
+    </a>
+
+    <nav class="menu-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#dishes">Popular dishes</a>
+      <a href="#visit">Visit us</a>
+    </nav>
+
+    <div class="actions">
+      <a class="btn small" (click)="onLogin()">Get started</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="kicker">Open every day, 12:00 PM to 11:00 PM</span>
+      <h1>Good food, served with care.</h1>
+      <p>
+        Fresh Jordanian and Middle Eastern dishes, cooked every day with family recipes. Book a
+        table, order ahead and follow your meal from the kitchen to your seat.
+      </p>
+      <div class="cta">
+        <a class="btn" (click)="onLogin()">Get started</a>
+        <a class="btn ghost" href="#dishes">See our dishes</a>
+      </div>
+      <ul class="facts">
+        <li>Fresh ingredients daily</li>
+        <li>Family recipes</li>
+        <li>Easy booking</li>
+      </ul>
+    </div>
+
+    <figure
+      class="hero-photo"
+      style="--img: url('images/hero.jpg')"
+      role="img"
+      aria-label="A table full of our dishes"
+    ></figure>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="about-head">
+      <h2>A kitchen that cares about every plate</h2>
+      <p>
+        Saif Restaurant started with one idea: serve the food you grew up on, made the way it should
+        be. We cook with fresh ingredients, we prepare everything the same day, and we always keep
+        an eye on food safety, so you can enjoy your meal without worrying.
+      </p>
+    </div>
+
+    <ul class="cards">
+      <li>
+        <span class="num">1</span>
+        <h3>Fresh every day</h3>
+        <p>Vegetables, meat and bread arrive in the morning and are cooked the same day.</p>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <h3>Family recipes</h3>
+        <p>From mansaf to knafeh, our dishes follow recipes passed down through the years.</p>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <h3>Safe and clean</h3>
+        <p>We follow strict hygiene rules and we always ask about allergies before you order.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Popular dishes -->
+  <section id="dishes" class="dishes">
+    <div class="section-head">
+      <h2>Popular dishes</h2>
+      <p>The plates our guests order the most.</p>
+    </div>
+
+    <ul class="grid">
+      <li class="dish">
+        <figure
+          class="photo"
+          style="--img: url('images/mansaf.jpg')"
+          role="img"
+          aria-label="Mansaf"
+        ></figure>
+        <div class="dish-body">
+          <div class="row">
+            <h3>Mansaf</h3>
+            <span class="price">$9.99</span>
+          </div>
+          <p>Lamb in a yogurt sauce over rice, topped with almonds and parsley.</p>
+        </div>
+      </li>
+      <li class="dish">
+        <figure
+          class="photo"
+          style="--img: url('images/hummus.jpg')"
+          role="img"
+          aria-label="Hummus"
+        ></figure>
+        <div class="dish-body">
+          <div class="row">
+            <h3>Hummus</h3>
+            <span class="price">$1.99</span>
+          </div>
+          <p>Chickpeas, tahini, lemon and garlic, served with warm pita bread.</p>
+        </div>
+      </li>
+      <li class="dish">
+        <figure
+          class="photo"
+          style="--img: url('images/grilled-sea-bass.jpg')"
+          role="img"
+          aria-label="Grilled sea bass"
+        ></figure>
+        <div class="dish-body">
+          <div class="row">
+            <h3>Grilled sea bass</h3>
+            <span class="price">$13.99</span>
+          </div>
+          <p>A fresh fillet seasoned with herbs, with rice and vegetables.</p>
+        </div>
+      </li>
+      <li class="dish">
+        <figure
+          class="photo"
+          style="--img: url('images/knafeh.jpg')"
+          role="img"
+          aria-label="Knafeh"
+        ></figure>
+        <div class="dish-body">
+          <div class="row">
+            <h3>Knafeh</h3>
+            <span class="price">$6.00</span>
+          </div>
+          <p>Warm cheese under crisp semolina, finished with sugar syrup.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Visit us -->
+  <section id="visit" class="visit">
+    <div>
+      <h2>Come hungry, leave happy</h2>
+      <p>Book your table online or order ahead. We will have everything ready for you.</p>
+      <a class="btn gold" (click)="onLogin()">Get started</a>
+    </div>
+
+    <ul class="info">
+      <li><b>Address</b><span>12 Olive Street, Old Town</span></li>
+      <li><b>Phone</b><span>+00 000 000 000</span></li>
+      <li>
+        <b>Opening hours</b>
+        <span>Sunday to Thursday: 12:00 PM to 11:00 PM</span>
+        <span>Friday and Saturday: 12:00 PM to 12:00 AM</span>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <span>© Saif Restaurant. All rights reserved.</span>
+  </footer>
+</div>
