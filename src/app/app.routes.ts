@@ -9,6 +9,7 @@ import { Offers } from './pages/offers/offers';
 import { Contact } from './pages/contact/contact';
 import { Orders } from './pages/orders/orders';
 import { Landing } from './pages/landing/landing';
+import { NewOrder } from './pages/new-order/new-order';
 
 export const routes: Routes = [
   {
@@ -55,6 +56,10 @@ export const routes: Routes = [
       {
         path: 'orders',
         component: Orders,
+      },
+      {
+        path: 'neworder',
+        component: NewOrder,
       },
     ],
   },

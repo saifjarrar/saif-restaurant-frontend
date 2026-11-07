@@ -1,0 +1,130 @@
+<div class="overlay">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="no-title">
+    <header class="m-head">
+      <div>
+        <h2 id="no-title">New order</h2>
+        <p>Choose a table and the dishes, then send the order to the kitchen.</p>
+      </div>
+      <button class="close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </header>
+
+    <!-- A div (not a form) so nothing reloads the page before it is connected -->
+    <div class="m-body">
+      <div class="field">
+        <label for="no-table">Table</label>
+        <select id="no-table">
+          <option value="" selected disabled>Choose a table</option>
+          <option>Table 1</option>
+          <option>Table 2</option>
+          <option>Table 3</option>
+          <option>Table 4</option>
+          <option>Table 5</option>
+          <option>Table 6</option>
+          <option>Table 7</option>
+          <option>Table 8</option>
+          <option>Terrace</option>
+        </select>
+      </div>
+
+      <fieldset class="dishes">
+        <legend>Dishes</legend>
+
+        <div class="dish-row">
+          <select aria-label="Dish">
+            <option value="" selected disabled>Choose a dish</option>
+            <optgroup label="Starters">
+              <option>Hummus</option>
+              <option>Falafel</option>
+              <option>Fattoush Salad</option>
+              <option>Mutabbal</option>
+              <option>Kibbeh</option>
+            </optgroup>
+            <optgroup label="Mains">
+              <option>Chicken Shawarma</option>
+              <option>Beef Kofta</option>
+              <option>Mansaf</option>
+              <option>Lamb Tagine</option>
+            </optgroup>
+            <optgroup label="Grills">
+              <option>Grilled Chicken</option>
+              <option>Grilled Salmon</option>
+              <option>Grilled sea bass</option>
+              <option>Shish Tawook</option>
+              <option>Grilled Lamb Chops</option>
+            </optgroup>
+            <optgroup label="Desserts">
+              <option>Knafeh</option>
+              <option>Baklava</option>
+              <option>Umm Ali</option>
+            </optgroup>
+            <optgroup label="Drinks">
+              <option>Mint lemonade</option>
+              <option>Arabic coffee</option>
+              <option>Jallab</option>
+              <option>Fresh orange juice</option>
+            </optgroup>
+          </select>
+          <input type="number" min="1" value="1" aria-label="Quantity" />
+          <button class="remove" type="button" aria-label="Remove this dish">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <div class="dish-row">
+          <select aria-label="Dish">
+            <option value="" selected disabled>Choose a dish</option>
+            <optgroup label="Starters">
+              <option>Hummus</option>
+              <option>Falafel</option>
+              <option>Fattoush Salad</option>
+              <option>Mutabbal</option>
+              <option>Kibbeh</option>
+            </optgroup>
+            <optgroup label="Mains">
+              <option>Chicken Shawarma</option>
+              <option>Beef Kofta</option>
+              <option>Mansaf</option>
+              <option>Lamb Tagine</option>
+            </optgroup>
+            <optgroup label="Grills">
+              <option>Grilled Chicken</option>
+              <option>Grilled Salmon</option>
+              <option>Grilled sea bass</option>
+              <option>Shish Tawook</option>
+              <option>Grilled Lamb Chops</option>
+            </optgroup>
+            <optgroup label="Desserts">
+              <option>Knafeh</option>
+              <option>Baklava</option>
+              <option>Umm Ali</option>
+            </optgroup>
+            <optgroup label="Drinks">
+              <option>Mint lemonade</option>
+              <option>Arabic coffee</option>
+              <option>Jallab</option>
+              <option>Fresh orange juice</option>
+            </optgroup>
+          </select>
+          <input type="number" min="1" value="1" aria-label="Quantity" />
+          <button class="remove" type="button" aria-label="Remove this dish">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+
+        <button class="add" type="button">+ Add another dish</button>
+      </fieldset>
+
+      <div class="field">
+        <label for="no-notes">Notes <span class="opt">(optional)</span></label>
+        <textarea id="no-notes" rows="3" placeholder="Allergies, no onions, birthday..."></textarea>
+      </div>
+    </div>
+
+    <footer class="m-foot">
+      <button class="btn ghost" type="button">Cancel</button>
+      <button class="btn" type="button">Send to kitchen</button>
+    </footer>
+  </section>
+</div>
