@@ -34,7 +34,15 @@ export interface MostOrdered {
   name: string;
   quantity: number;
 }
+export interface CreateOrderDish {
+  name: string;
+  quantity: number;
+}
 
+export interface CreateOrderRequest {
+  table: string;
+  dishes: CreateOrderDish[];
+}
 export interface DashboardData {
   restaurantinfo: RestaurantInfo[];
   ordertickets: OrderTicket[];
@@ -55,5 +63,8 @@ export class DashboardService {
 
   advanceOrder(id: number): Observable<OrderTicket> {
     return this.http.put<OrderTicket>(`${this.baseUrl}/orders/${id}/advance`, {});
+  }
+  createOrder(order: CreateOrderRequest): Observable<OrderTicket> {
+    return this.http.post<OrderTicket>(`${this.baseUrl}/orders`, order);
   }
 }

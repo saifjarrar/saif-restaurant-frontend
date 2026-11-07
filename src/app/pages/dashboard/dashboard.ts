@@ -52,16 +52,6 @@ export class Dashboard implements OnInit {
     });
   }
 
-  returnToReceived(id: number): void {
-    this.dashboardService.advanceOrder(id).subscribe({
-      next: (updated: OrderTicket) => {
-        this.ordertickets.update((list) => list.map((o) => (o.id === updated.id ? updated : o)));
-      },
-      error: (err: any) => {
-        alert(err.error?.message ?? err.message);
-      },
-    });
-  }
   barWidth(quantity: number): number {
     const max = Math.max(...this.mostordered().map((d) => d.quantity), 1);
 

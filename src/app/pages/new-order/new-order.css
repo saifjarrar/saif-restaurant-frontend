@@ -134,3 +134,15 @@ select:focus, input[type="number"]:focus, textarea:focus {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+select.ng-invalid.ng-touched,
+input[type="number"].ng-invalid.ng-touched {
+  border-color: var(--error);
+}
+ 
+.error-text {
+  margin-top: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--error);
+}
+ 

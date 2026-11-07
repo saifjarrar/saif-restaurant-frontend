@@ -70,7 +70,7 @@
           } @else if (order.orderstatus.toLowerCase() == 'received') {
             <button class="t-btn" type="button" (click)="markAs(order.id)">Start Cooking</button>
           } @else if (order.orderstatus.toLowerCase() == 'served') {
-            <button class="t-btn" type="button" (click)="returnToReceived(order.id)">
+            <button class="t-btn" type="button" (click)="markAs(order.id)">
               Return to Received
             </button>
           }
