@@ -8,6 +8,7 @@ import {
   RestaurantInfo,
 } from '../../services/dashboard-service/dashboard-service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ import { DatePipe } from '@angular/common';
 })
 export class Dashboard implements OnInit {
   date = new Date();
-
+  router = inject(Router);
   dashboardService = inject(DashboardService);
 
   restaurantinfo = signal<RestaurantInfo[]>([]);
@@ -65,5 +66,8 @@ export class Dashboard implements OnInit {
     const max = Math.max(...this.mostordered().map((d) => d.quantity), 1);
 
     return (quantity / max) * 100;
+  }
+  onNewOrder() {
+    this.router.navigateByUrl('/layout/neworder');
   }
 }

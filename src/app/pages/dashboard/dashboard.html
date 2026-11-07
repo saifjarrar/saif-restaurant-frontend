@@ -18,11 +18,17 @@
   </section>
 
   <section class="block">
+    <<!-- In dashboard.html: replace the block-head of the kitchen board with this -->
     <div class="block-head">
       <h2>On the kitchen board</h2>
-      <span class="count">{{ ordertickets().length }} orders</span>
+      <div class="head-actions">
+        <span class="count">{{ ordertickets().length }} orders</span>
+        <button class="new-btn" type="button" (click)="onNewOrder()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          New order
+        </button>
+      </div>
     </div>
-
     <div class="tickets">
       @for (order of ordertickets(); track order.id) {
         <article
