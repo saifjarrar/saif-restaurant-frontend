@@ -106,6 +106,7 @@
         class="btn"
         type="button"
         [disabled]="isSending()"
+        [disabled]="form.invalid"
         (click)="send()"
         (click)="onDashboard()"
       >
