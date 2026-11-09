@@ -61,6 +61,7 @@ export class NewOrder {
         this.isSending.set(false);
         this.created.emit(order);
         this.resetForm();
+        this.onDashboard();
       },
 
       error: (err) => {
