@@ -1,0 +1,15 @@
+<div class="food-particles" aria-hidden="true">
+
+  @for (particle of particles; track $index) {
+    <span
+      class="particle"
+      [style.left.%]="particle.left"
+      [style.animation-delay.s]="particle.delay"
+      [style.animation-duration.s]="particle.duration">
+
+      {{ particle.icon }}
+
+    </span>
+  }
+
+</div>
