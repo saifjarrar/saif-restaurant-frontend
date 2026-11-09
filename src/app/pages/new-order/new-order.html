@@ -101,17 +101,10 @@
     </div>
 
     <footer class="m-foot">
-      <button class="btn ghost" type="button" (click)="onDashboard()">Cancel</button>
-      <button
-        class="btn"
-        type="button"
-        [disabled]="isSending()"
-        [disabled]="form.invalid"
-        (click)="send()"
-        (click)="onDashboard()"
-      >
-        {{ isSending() ? 'Sending...' : 'Send to kitchen' }}
-      </button>
-    </footer>
+  <button class="btn ghost" type="button" (click)="onDashboard()">Cancel</button>
+  <button class="btn" type="button" [disabled]="isSending()" (click)="send()">
+    {{ isSending() ? 'Sending...' : 'Send to kitchen' }}
+  </button>
+</footer>
   </section>
 </div>

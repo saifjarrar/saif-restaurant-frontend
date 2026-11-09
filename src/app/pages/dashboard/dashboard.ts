@@ -59,5 +59,6 @@ export class Dashboard implements OnInit {
   }
   onNewOrder() {
     this.router.navigateByUrl('/layout/neworder');
+    this.dashboardService.getDashboard();
   }
 }
