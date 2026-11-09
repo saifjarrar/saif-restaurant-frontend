@@ -49,7 +49,13 @@ export interface DashboardData {
   tonightreservations: Reservation[];
   mostordered: MostOrdered[];
 }
-
+export interface CreateReservationRequest {
+  name: string;
+  phone: string;
+  date: string;
+  guests: number;
+  seating: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -66,5 +72,8 @@ export class DashboardService {
   }
   createOrder(order: CreateOrderRequest): Observable<OrderTicket> {
     return this.http.post<OrderTicket>(`${this.baseUrl}/orders`, order);
+  }
+  createReservation(reservation: CreateReservationRequest): Observable<Reservation> {
+    return this.http.post<Reservation>(`${this.baseUrl}/reservations`, reservation);
   }
 }

@@ -5,100 +5,124 @@
   </header>
 
   <div class="layout">
-    <!-- Booking form (static, choices work with CSS only) -->
-    <section class="booking" aria-label="Book a table">
+    <!-- Booking form (reactive) -->
+    <section class="booking" aria-label="Book a table" [formGroup]="form">
       <div class="group">
         <h2>Day</h2>
         <div class="chips days">
-          <input class="pick" type="radio" name="day" id="day-1" checked />
-          <label for="day-1"><small>Today</small><b>2</b></label>
-          <input class="pick" type="radio" name="day" id="day-2" />
-          <label for="day-2"><small>Tue</small><b>3</b></label>
-          <input class="pick" type="radio" name="day" id="day-3" />
-          <label for="day-3"><small>Wed</small><b>4</b></label>
-          <input class="pick" type="radio" name="day" id="day-4" />
-          <label for="day-4"><small>Thu</small><b>5</b></label>
-          <input class="pick" type="radio" name="day" id="day-5" />
-          <label for="day-5"><small>Fri</small><b>6</b></label>
-          <input class="pick" type="radio" name="day" id="day-6" />
-          <label for="day-6"><small>Sat</small><b>7</b></label>
-          <input class="pick" type="radio" name="day" id="day-7" />
-          <label for="day-7"><small>Sun</small><b>8</b></label>
+          @for (day of days; track day.value) {
+            <input
+              class="pick"
+              type="radio"
+              formControlName="date"
+              [value]="day.value"
+              [id]="'day-' + day.value"
+            />
+            <label [attr.for]="'day-' + day.value">
+              <small>{{ day.weekday }}</small>
+              <b>{{ day.number }}</b>
+            </label>
+          }
         </div>
       </div>
 
       <div class="group">
         <h2>Guests</h2>
         <div class="chips guests">
-          <input class="pick" type="radio" name="guests" id="g-1" />
-          <label for="g-1">1</label>
-          <input class="pick" type="radio" name="guests" id="g-2" />
-          <label for="g-2">2</label>
-          <input class="pick" type="radio" name="guests" id="g-3" />
-          <label for="g-3">3</label>
-          <input class="pick" type="radio" name="guests" id="g-4" checked />
-          <label for="g-4">4</label>
-          <input class="pick" type="radio" name="guests" id="g-5" />
-          <label for="g-5">5</label>
-          <input class="pick" type="radio" name="guests" id="g-6" />
-          <label for="g-6">6</label>
-          <input class="pick" type="radio" name="guests" id="g-7" />
-          <label for="g-7">7</label>
-          <input class="pick" type="radio" name="guests" id="g-8" />
-          <label for="g-8">8</label>
+          @for (n of guestOptions; track n) {
+            <input
+              class="pick"
+              type="radio"
+              formControlName="guests"
+              [value]="n"
+              [id]="'guests-' + n"
+            />
+            <label [attr.for]="'guests-' + n">{{ n }}</label>
+          }
         </div>
       </div>
 
       <div class="group">
         <h2>Time</h2>
         <div class="chips times">
-          <input class="pick" type="radio" name="time" id="t-1" />
-          <label for="t-1">1:00 PM</label>
-          <input class="pick" type="radio" name="time" id="t-2" />
-          <label for="t-2">2:00 PM</label>
-          <input class="pick" type="radio" name="time" id="t-3" />
-          <label for="t-3">6:30 PM</label>
-          <input class="pick" type="radio" name="time" id="t-4" />
-          <label for="t-4">7:00 PM</label>
-          <input class="pick" type="radio" name="time" id="t-5" disabled />
-          <label for="t-5">7:30 PM<small>Full</small></label>
-          <input class="pick" type="radio" name="time" id="t-6" checked />
-          <label for="t-6">8:00 PM</label>
-          <input class="pick" type="radio" name="time" id="t-7" />
-          <label for="t-7">8:30 PM</label>
-          <input class="pick" type="radio" name="time" id="t-8" disabled />
-          <label for="t-8">9:00 PM<small>Full</small></label>
+          @for (slot of times; track slot.value) {
+            <input
+              class="pick"
+              type="radio"
+              formControlName="time"
+              [value]="slot.value"
+              [id]="'time-' + slot.value"
+              [attr.disabled]="slot.full ? true : null"
+            />
+            <label [attr.for]="'time-' + slot.value">
+              {{ slot.value }}
+              @if (slot.full) {
+                <small>Full</small>
+              }
+            </label>
+          }
         </div>
       </div>
 
       <div class="group">
         <h2>Seating</h2>
         <div class="chips area">
-          <input class="pick" type="radio" name="area" id="a-1" checked />
-          <label for="a-1">Indoor</label>
-          <input class="pick" type="radio" name="area" id="a-2" />
-          <label for="a-2">Terrace</label>
-          <input class="pick" type="radio" name="area" id="a-3" />
-          <label for="a-3">Family section</label>
+          @for (option of seatingOptions; track option) {
+            <input
+              class="pick"
+              type="radio"
+              formControlName="seating"
+              [value]="option"
+              [id]="'seat-' + option"
+            />
+            <label [attr.for]="'seat-' + option">{{ option }}</label>
+          }
         </div>
       </div>
 
       <div class="group two-fields">
         <div class="field">
-          <input type="text" id="res-name" placeholder=" " autocomplete="name" />
+          <input
+            type="text"
+            id="res-name"
+            formControlName="name"
+            placeholder=" "
+            autocomplete="name"
+          />
           <label for="res-name">Full name</label>
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <p class="error-text">Please enter your name</p>
+          }
         </div>
+
         <div class="field">
-          <input type="tel" id="res-phone" placeholder=" " autocomplete="tel" />
+          <input
+            type="tel"
+            id="res-phone"
+            formControlName="phone"
+            placeholder=" "
+            autocomplete="tel"
+          />
           <label for="res-phone">Phone number</label>
+          @if (form.controls.phone.touched && form.controls.phone.invalid) {
+            <p class="error-text">Enter a valid phone number</p>
+          }
         </div>
+
+        <!-- Not connected yet: the backend does not save notes -->
         <div class="field wide">
           <textarea id="res-notes" rows="3" placeholder=" "></textarea>
           <label for="res-notes">Notes (allergies, birthday, high chair)</label>
         </div>
       </div>
 
-      <button class="btn" type="button">Confirm reservation</button>
+      @if (errorMessage()) {
+        <p class="error-text server-error">{{ errorMessage() }}</p>
+      }
+
+      <button class="btn" type="button" [disabled]="isSending()" (click)="confirm()">
+        {{ isSending() ? 'Sending...' : 'Confirm reservation' }}
+      </button>
     </section>
 
     <!-- Side -->
