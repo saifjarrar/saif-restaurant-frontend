@@ -85,6 +85,14 @@ export class Menuservice {
           category: 'non-vegetarian',
           imageUrl: 'images/lamb-tagine.jpg',
         },
+        {
+          name: 'Beef Burger',
+          price: 7.49,
+          description:
+            'Grilled beef patty with cheddar, lettuce, tomato and pickles in a toasted bun, served with fries.',
+          category: 'non-vegetarian',
+          imageUrl: 'images/beef-burger.jpg',
+        },
       ],
     },
     grills: {
