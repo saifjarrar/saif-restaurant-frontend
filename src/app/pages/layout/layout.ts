@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -9,6 +9,17 @@ import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/rou
 })
 export class Layout {
   router = inject(Router);
+  menuOpen = signal(false);
+
+  // NEW: بيفتح القائمة لو مسكّرة، وبيسكّرها لو مفتوحة
+  toggleMenu() {
+    this.menuOpen.update((open) => !open);
+  }
+
+  // NEW: بيسكّر القائمة (بنستخدمه بعد ما تضغط أي رابط)
+  closeMenu() {
+    this.menuOpen.set(false);
+  }
   onLogout() {
     this.router.navigateByUrl('/login');
   }
