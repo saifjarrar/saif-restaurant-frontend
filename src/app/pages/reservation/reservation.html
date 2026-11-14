@@ -119,10 +119,15 @@
       @if (errorMessage()) {
         <p class="error-text server-error">{{ errorMessage() }}</p>
       }
-
-      <button class="btn" type="button" [disabled]="isSending()" (click)="confirm()">
-        {{ isSending() ? 'Sending...' : 'Confirm reservation' }}
-      </button>
+      @if (auth.isAdmin()) {
+        <button class="btn" type="button" [disabled]="isSending()" (click)="confirm()">
+          {{ isSending() ? 'Sending...' : 'Confirm reservation' }}
+        </button>
+      } @else {
+        <button class="btn" type="button" [disabled]="isSending()" (click)="confirmcustomer()">
+          {{ isSending() ? 'Sending...' : 'Confirm reservation' }}
+        </button>
+      }
     </section>
 
     <!-- Side -->

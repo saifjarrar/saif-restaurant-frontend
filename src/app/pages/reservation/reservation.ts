@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DashboardService } from '../../services/dashboard-service/dashboard-service';
+import { AuthService } from '../../services/auth-service/auth-service';
 
 @Component({
   selector: 'app-reservation',
@@ -13,6 +14,7 @@ export class Reservation {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private dashboardService = inject(DashboardService);
+  auth = inject(AuthService);
 
   isSending = signal(false);
 
@@ -85,6 +87,29 @@ export class Reservation {
       next: () => {
         this.isSending.set(false);
         this.router.navigateByUrl('/layout/dashboard');
+      },
+
+      error: (err) => {
+        this.isSending.set(false);
+        this.errorMessage.set(err.error?.message ?? 'Something went wrong. Please try again.');
+      },
+    });
+  }
+  confirmcustomer() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const request = this.form.getRawValue();
+
+    this.isSending.set(true);
+    this.errorMessage.set('');
+
+    this.dashboardService.createReservation(request).subscribe({
+      next: () => {
+        this.isSending.set(false);
+        alert('Reservation created successfully!');
       },
 
       error: (err) => {
