@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../services/auth-service/auth-service';
 
 @Component({
   imports: [RouterLink, RouterOutlet, RouterLinkActive],
@@ -10,6 +11,7 @@ import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/rou
 export class Layout {
   router = inject(Router);
   menuOpen = signal(false);
+  auth = inject(AuthService);
 
   // NEW: بيفتح القائمة لو مسكّرة، وبيسكّرها لو مفتوحة
   toggleMenu() {
@@ -21,6 +23,7 @@ export class Layout {
     this.menuOpen.set(false);
   }
   onLogout() {
+    this.auth.logout();
     this.router.navigateByUrl('/login');
   }
 }
