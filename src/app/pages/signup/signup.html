@@ -126,13 +126,13 @@
       @if (checkbox?.touched && checkbox?.invalid) {
         <div class="error"><span>You must agree before signing up</span></div>
       }
-      <button class="btn" type="submit" (click)="onSignup()">Create account</button>
+      <button class="btn" type="submit" (click)="onSignup()" [disabled]="signupform.invalid">
+        Create account
+      </button>
 
       <p class="switch-text">
         Already have an account?
-        <button class="link-btn" type="button" (click)="onLogin()" [disabled]="signupform.invalid">
-          Log in
-        </button>
+        <button class="link-btn" type="button" (click)="onLogin()">Log in</button>
       </p>
     </form>
   </section>
