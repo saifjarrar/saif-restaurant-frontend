@@ -4,12 +4,13 @@
     <span class="glow"></span>
 
     <div class="brand">
-      <span class="mark"
-        ><svg viewBox="0 0 24 24">
+      <span class="mark">
+        <svg viewBox="0 0 24 24">
           <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
-          <path d="M8.5 12l2.5 2.5 4.5-5" /></svg
-      ></span>
-      <span class="brand-name">Safe Restaurant</span>
+          <path d="M8.5 12l2.5 2.5 4.5-5" />
+        </svg>
+      </span>
+      <span class="brand-name">Saif Restaurant</span>
     </div>
 
     <div class="pitch">
@@ -32,21 +33,28 @@
           <i class="lemon"></i>
         </div>
 
-        <div class="mock-top"><b>Getting started</b><span class="pill">2 of 3</span></div>
+        <div class="mock-top">
+          <b>Getting started</b>
+          <span class="pill">2 of 3</span>
+        </div>
 
         <div class="progress"><i></i></div>
 
         <ul class="steps">
           <li class="step done">
-            <span class="dot"
-              ><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" /></svg
-            ></span>
+            <span class="dot">
+              <svg viewBox="0 0 12 12">
+                <path d="M2 6.5l2.5 2.5L10 3.5" />
+              </svg>
+            </span>
             Create your account
           </li>
           <li class="step done late">
-            <span class="dot"
-              ><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" /></svg
-            ></span>
+            <span class="dot">
+              <svg viewBox="0 0 12 12">
+                <path d="M2 6.5l2.5 2.5L10 3.5" />
+              </svg>
+            </span>
             Pick your favourite dishes
           </li>
           <li class="step current">
@@ -61,15 +69,16 @@
   <!-- Right: register form -->
   <section class="panel">
     <div class="brand m-brand">
-      <span class="mark"
-        ><svg viewBox="0 0 24 24">
+      <span class="mark">
+        <svg viewBox="0 0 24 24">
           <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
-          <path d="M8.5 12l2.5 2.5 4.5-5" /></svg
-      ></span>
-      <span class="brand-name">Safe Restaurant</span>
+          <path d="M8.5 12l2.5 2.5 4.5-5" />
+        </svg>
+      </span>
+      <span class="brand-name">Saif Restaurant</span>
     </div>
 
-    <form class="form" [formGroup]="signupform">
+    <form class="form" [formGroup]="signupform" (ngSubmit)="onSignup()">
       <h1>Create your account</h1>
       <p class="sub">It takes less than a minute to start booking and ordering.</p>
 
@@ -83,13 +92,21 @@
           name="email"
         />
         <label for="reg-email">Email address</label>
+
         <svg class="ic" viewBox="0 0 24 24">
           <rect x="3" y="5" width="18" height="14" rx="3" />
           <path d="m4 8 8 5 8-5" />
         </svg>
 
-        <!-- Validation message (show with @if when invalid):
-        <div class="error"><span>Email is required</span></div> -->
+        @if (email?.touched && email?.invalid) {
+          <div class="error">
+            @if (email?.errors?.['required']) {
+              <span>Email is required</span>
+            } @else if (email?.errors?.['email']) {
+              <span>Enter a valid email address</span>
+            }
+          </div>
+        }
       </div>
 
       <div class="field">
@@ -100,35 +117,59 @@
           name="password"
           formControlName="password"
           autocomplete="new-password"
-          pattern="(?=.*[A-Za-z])(?=.*[0-9]).{8,}"
         />
         <label for="reg-pass">Password</label>
+
         <svg class="ic" viewBox="0 0 24 24">
           <rect x="5" y="11" width="14" height="9" rx="3" />
           <path d="M8 11V8a4 4 0 0 1 8 0v3" />
         </svg>
+
         <div class="meter"><i></i></div>
         <p class="hint">Use 8+ characters with a letter and a number.</p>
+
+        @if (password?.touched && password?.invalid) {
+          <div class="error">
+            @if (password?.errors?.['required']) {
+              <span>Password is required</span>
+            } @else if (password?.errors?.['minlength']) {
+              <span>Password must be at least 8 characters</span>
+            } @else if (password?.errors?.['pattern']) {
+              <span>Password must contain at least one letter and one number</span>
+            }
+          </div>
+        }
       </div>
 
       <div class="terms">
         <label class="check">
           <input type="checkbox" formControlName="checkbox" name="checkbox" />
-          <span class="box"
-            ><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" /></svg
-          ></span>
-          <span
-            >I agree to the <a href="#">Terms of Service</a> and
-            <a href="#">Privacy Policy</a></span
-          >
+          <span class="box">
+            <svg viewBox="0 0 12 12">
+              <path d="M2 6.5l2.5 2.5L10 3.5" />
+            </svg>
+          </span>
+          <span>
+            I agree to the <a href="#">Terms of Service</a> and
+            <a href="#">Privacy Policy</a>
+          </span>
         </label>
       </div>
+
       @if (checkbox?.touched && checkbox?.invalid) {
-        <div class="error"><span>You must agree before signing up</span></div>
+        <div class="error terms-error">
+          <span>You must agree before signing up</span>
+        </div>
       }
-      <button class="btn" type="submit" (click)="onSignup()" [disabled]="signupform.invalid">
-        Create account
-      </button>
+
+      <!-- Backend error message -->
+      @if (errorMessage) {
+        <div class="error server-error" role="alert">
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
+      <button class="btn" type="submit">Create account</button>
 
       <p class="switch-text">
         Already have an account?
