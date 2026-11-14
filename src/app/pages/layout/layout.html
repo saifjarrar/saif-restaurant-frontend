@@ -24,15 +24,17 @@
   <div class="panel">
     <!-- NEW: (click)="closeMenu()" closes the menu after choosing a page -->
     <nav class="links" aria-label="Main" (click)="closeMenu()">
-      <a class="link" routerLink="/layout/dashboard" routerLinkActive="active" title="Dashboard">
-        <svg viewBox="0 0 24 24">
-          <rect x="3" y="3" width="7.5" height="9" rx="2" />
-          <rect x="13.5" y="3" width="7.5" height="5" rx="2" />
-          <rect x="13.5" y="11" width="7.5" height="10" rx="2" />
-          <rect x="3" y="15" width="7.5" height="6" rx="2" />
-        </svg>
-        <span>Dashboard</span>
-      </a>
+      @if (auth.isAdmin()) {
+        <a class="link" routerLink="/layout/dashboard" routerLinkActive="active" title="Dashboard">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7.5" height="9" rx="2" />
+            <rect x="13.5" y="3" width="7.5" height="5" rx="2" />
+            <rect x="13.5" y="11" width="7.5" height="10" rx="2" />
+            <rect x="3" y="15" width="7.5" height="6" rx="2" />
+          </svg>
+          <span>Dashboard</span>
+        </a>
+      }
 
       <a class="link" routerLink="/layout/menu" routerLinkActive="active" title="Menu">
         <svg viewBox="0 0 24 24">
@@ -58,13 +60,15 @@
         <span>Reservations</span>
       </a>
 
-      <a class="link" routerLink="/layout/orders" routerLinkActive="active" title="Orders">
-        <svg viewBox="0 0 24 24">
-          <path d="M6 8h12l1 12H5z" />
-          <path d="M9 8a3 3 0 0 1 6 0" />
-        </svg>
-        <span>Orders</span>
-      </a>
+      @if (auth.isAdmin()) {
+        <a class="link" routerLink="/layout/orders" routerLinkActive="active" title="Orders">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 8h12l1 12H5z" />
+            <path d="M9 8a3 3 0 0 1 6 0" />
+          </svg>
+          <span>Orders</span>
+        </a>
+      }
 
       <a class="link" routerLink="/layout/offers" routerLinkActive="active" title="Offers">
         <svg viewBox="0 0 24 24">
