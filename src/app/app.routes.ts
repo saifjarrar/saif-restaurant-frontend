@@ -10,6 +10,7 @@ import { Contact } from './pages/contact/contact';
 import { Orders } from './pages/orders/orders';
 import { Landing } from './pages/landing/landing';
 import { NewOrder } from './pages/new-order/new-order';
+import { authGuard } from './guards/auth-guards-guard';
 
 export const routes: Routes = [
   {
@@ -32,10 +33,12 @@ export const routes: Routes = [
   {
     path: 'layout',
     component: Layout,
+    canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',
         component: Dashboard,
+        canActivate: [authGuard],
       },
       {
         path: 'reservation',
@@ -56,10 +59,12 @@ export const routes: Routes = [
       {
         path: 'orders',
         component: Orders,
+        canActivate: [authGuard],
       },
       {
         path: 'neworder',
         component: NewOrder,
+        canActivate: [authGuard],
       },
     ],
   },
