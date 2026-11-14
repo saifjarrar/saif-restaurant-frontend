@@ -7,11 +7,12 @@
     <span class="glow"></span>
 
     <div class="brand">
-      <span class="mark"
-        ><svg viewBox="0 0 24 24">
+      <span class="mark">
+        <svg viewBox="0 0 24 24">
           <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
-          <path d="M8.5 12l2.5 2.5 4.5-5" /></svg
-      ></span>
+          <path d="M8.5 12l2.5 2.5 4.5-5" />
+        </svg>
+      </span>
       <span class="brand-name">Saif Restaurant</span>
     </div>
 
@@ -22,9 +23,11 @@
 
     <div class="stage">
       <div class="toast">
-        <span class="tick"
-          ><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg
-        ></span>
+        <span class="tick">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12.5l4.5 4.5L19 7.5" />
+          </svg>
+        </span>
         <span>Table for 4 confirmed<small>Tonight, 8:30 PM</small></span>
       </div>
 
@@ -37,7 +40,10 @@
           <i class="lemon"></i>
         </div>
 
-        <div class="mock-top"><b>Order #2481</b><span class="pill">Ready in 12 min</span></div>
+        <div class="mock-top">
+          <b>Order #2481</b>
+          <span class="pill">Ready in 12 min</span>
+        </div>
         <div class="mock-num">Grilled sea bass</div>
         <div class="mock-sub">Lemon butter, charred greens · Table 7</div>
 
@@ -53,11 +59,12 @@
   <!-- Right: forms -->
   <section class="panel">
     <div class="brand m-brand">
-      <span class="mark"
-        ><svg viewBox="0 0 24 24">
+      <span class="mark">
+        <svg viewBox="0 0 24 24">
           <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
-          <path d="M8.5 12l2.5 2.5 4.5-5" /></svg
-      ></span>
+          <path d="M8.5 12l2.5 2.5 4.5-5" />
+        </svg>
+      </span>
       <span class="brand-name">Saif Restaurant</span>
     </div>
 
@@ -116,10 +123,18 @@
         }
       </div>
 
+      <!-- Backend error message -->
+      @if (errorMessage) {
+        <div class="error server-error" role="alert">
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
       <button class="btn" type="submit">Log in</button>
 
       <p class="switch-text">
-        Don't have an account? <label for="tab-signup" (click)="onSignup()">Sign up</label>
+        Don't have an account?
+        <label for="tab-signup" (click)="onSignup()">Sign up</label>
       </p>
     </form>
   </section>
