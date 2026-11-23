@@ -4,7 +4,12 @@
       <h1>{{ 'Today at Saif Restaurant' | translate }}</h1>
       <p class="sub">{{ date | date: 'fullDate' }}</p>
     </div>
-    <span class="open"><i></i>{{ 'Kitchen open until 11:00 PM' | translate }}</span>
+   
+     <span class="open">
+  <i></i>
+  {{ (isWeekend ? 'Kitchen open until 12:00 AM' : 'Kitchen open until 11:00 PM') | translate }}
+</span>
+      
   </header>
 
   <section class="strip" [attr.aria-label]="'Summary' | translate">

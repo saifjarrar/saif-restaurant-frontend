@@ -97,4 +97,8 @@ export class Dashboard implements OnInit {
 
     return minutes > 0 ? `Ready in about ${minutes} min` : 'Estimated ready time reached';
   }
+  get isWeekend(): boolean {
+    const day = new Date().getDay();
+    return day === 5 || day === 6;
+  }
 }
