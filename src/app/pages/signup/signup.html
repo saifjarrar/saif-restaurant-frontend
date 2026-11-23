@@ -169,7 +169,12 @@
         </div>
       }
 
-      <button class="btn" type="submit" [disabled]="submitting()">{{ (submitting() ? 'Creating account…' : 'Create account') | translate }}</button>
+      <button class="btn" type="submit" [disabled]="submitting()" [attr.aria-busy]="submitting()">
+        @if (submitting()) {
+          <span class="spinner" aria-hidden="true"></span>
+        }
+        {{ (submitting() ? 'Creating account…' : 'Create account') | translate }}
+      </button>
 
       <p class="switch-text">
         {{ 'Already have an account?' | translate }}
