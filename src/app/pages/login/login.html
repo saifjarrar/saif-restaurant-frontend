@@ -130,7 +130,12 @@
         </div>
       }
 
-      <button class="btn" type="submit" [disabled]="submitting()">{{ (submitting() ? 'Logging in…' : 'Log in') | translate }}</button>
+      <button class="btn" type="submit" [disabled]="submitting()" [attr.aria-busy]="submitting()">
+        @if (submitting()) {
+          <span class="spinner" aria-hidden="true"></span>
+        }
+        {{ (submitting() ? 'Logging in…' : 'Log in') | translate }}
+      </button>
 
       <p class="switch-text">
         {{ 'Don\'t have an account?' | translate }}
