@@ -682,6 +682,33 @@ a:hover {
   transition: transform .25s var(--ease), box-shadow .25s, background .25s;
 }
 
+.btn:disabled {
+  cursor: wait;
+  opacity: .88;
+}
+
+.btn:disabled:hover {
+  transform: none;
+  background: var(--brand);
+  box-shadow: 0 14px 26px -12px rgba(18, 80, 63, .85);
+}
+
+.spinner {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  margin-inline-end: 10px;
+  vertical-align: -3px;
+  border: 2px solid rgba(255, 255, 255, .4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: signup-spin .7s linear infinite;
+}
+
+@keyframes signup-spin {
+  to { transform: rotate(360deg); }
+}
+
 .btn:hover {
   transform: translateY(-2px);
   background: var(--brand-dark);
