@@ -66,6 +66,7 @@ export class Signup {
 
     this.submitting.set(true);
 
+    this.submitting.set(true);
     this.http
       .post<SignupResponse>(`${API_URL}/Auth/register`, signupvalue)
       .pipe(timeout(75_000), finalize(() => this.submitting.set(false)))
