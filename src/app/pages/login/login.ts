@@ -65,6 +65,8 @@ export class Login {
             this.errorMessage.set('The server took too long to respond. Please try again.');
           } else if (err.status === 0) {
             this.errorMessage.set('Unable to connect to the server. Please try again later.');
+          } else if (err.status === 423) {
+            this.errorMessage.set('Your account has been temporarily locked after 5 failed login attempts. Please try again in 10 minutes.');
           } else if (err.status === 401) {
             this.errorMessage.set('Incorrect email or password. Please check your credentials.');
           } else if (err.status === 400) {
