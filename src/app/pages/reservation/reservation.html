@@ -179,37 +179,26 @@
         <p class="note">{{ 'Kitchen closes 30 minutes before closing time.' | translate }}</p>
       </section>
 
-      <!-- Upcoming Reservations -->
+      <!-- Reservation Summary -->
       <section class="card">
-        <h2>{{ 'Your upcoming reservations' | translate }}</h2>
+        <h2>{{ 'Your reservation summary' | translate }}</h2>
 
-        <ul class="upcoming">
+        <ul class="tips">
           <li>
-            <div class="date">
-              <small>{{ 'Fri' | translate }}</small>
-              <b>6</b>
-            </div>
-
-            <div class="info">
-              <b>{{ '8:00 PM · 4 guests' | translate }}</b>
-              <small>{{ 'Terrace' | translate }}</small>
-            </div>
-
-            <span class="status ok">{{ 'Confirmed' | translate }}</span>
+            <strong>{{ 'Date' | translate }}:</strong>
+            {{ form.controls.date.value }}
           </li>
-
           <li>
-            <div class="date">
-              <small>{{ 'Sat' | translate }}</small>
-              <b>14</b>
-            </div>
-
-            <div class="info">
-              <b>{{ '7:00 PM · 2 guests' | translate }}</b>
-              <small>{{ 'Indoor' | translate }}</small>
-            </div>
-
-            <span class="status wait">{{ 'Pending' | translate }}</span>
+            <strong>{{ 'Time' | translate }}:</strong>
+            {{ form.controls.time.value }}
+          </li>
+          <li>
+            <strong>{{ 'Guests' | translate }}:</strong>
+            {{ form.controls.guests.value }}
+          </li>
+          <li>
+            <strong>{{ 'Seating' | translate }}:</strong>
+            {{ form.controls.seating.value | translate }}
           </li>
         </ul>
       </section>
