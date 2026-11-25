@@ -79,7 +79,8 @@
 }
 
 .stat + .stat {
-  border-left: 1px solid rgba(255, 255, 255, .22);
+  /* Keep the separator visible on both LTR and RTL layouts. */
+  border-inline-start: 1px solid rgba(255, 255, 255, .22);
 }
 
 .stat .label {
@@ -387,7 +388,7 @@
   }
 
   .stat:nth-child(3) {
-    border-left: 0;
+    border-inline-start: 0;
   }
 
   .stat:nth-child(n + 3) {
