@@ -51,10 +51,14 @@ export class Dashboard implements OnInit {
   }
 
   cancelOrder(id: number): void {
-    this.saveOrder(id, this.dashboardService.cancelOrder(id));
+    this.saveOrder(id, this.dashboardService.cancelOrder(id), true);
   }
 
-  private saveOrder(id: number, request: Observable<OrderTicket>): void {
+  private saveOrder(
+    id: number,
+    request: Observable<OrderTicket>,
+    refreshDashboard = false,
+  ): void {
     if (this.savingOrderIds().includes(id)) return;
 
     this.savingOrderIds.update((ids) => [...ids, id]);
@@ -70,6 +74,16 @@ export class Dashboard implements OnInit {
           this.ordertickets.update((orders) =>
             orders.map((order) => (order.id === updated.id ? updated : order)),
           );
+
+          if (refreshDashboard) {
+            this.dashboardService.getDashboard().subscribe({
+              next: (data) => {
+                this.restaurantinfo.set(data.restaurantinfo ?? []);
+                this.mostordered.set(data.mostordered ?? []);
+              },
+              error: (err) => alert(err.error?.message ?? 'Could not refresh dashboard sales.'),
+            });
+          }
         },
         error: (err) => alert(err.error?.message ?? 'Could not update the order.'),
       });
