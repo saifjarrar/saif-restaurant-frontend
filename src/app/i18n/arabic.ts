@@ -297,6 +297,7 @@ const phrases = {
   "Your account has been created successfully.": "تم إنشاء حسابك بنجاح.",
   "The server took too long to respond. Please try again.": "تأخّر رد السيرفر. حاول مرة ثانية.",
   "Unable to connect to the server. Please try again later.": "تعذّر الاتصال بالسيرفر. حاول لاحقًا.",
+  "Your account has been temporarily locked after 5 failed login attempts. Please try again in 10 minutes.": "تم حظر تسجيل الدخول إلى حسابك مؤقتًا بعد ٥ محاولات فاشلة. يرجى المحاولة مرة أخرى بعد ١٠ دقائق.",
   "Incorrect email or password. Please check your credentials.": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
   "Something went wrong on the server. Please try again later.": "صار خطأ بالسيرفر. حاول لاحقًا.",
   "Login failed. Please try again.": "تعذّر تسجيل الدخول. حاول مرة ثانية.",
