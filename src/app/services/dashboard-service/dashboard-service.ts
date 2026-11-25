@@ -7,6 +7,7 @@ export interface RestaurantInfo {
   title: string;
   value: string;
   describe: string;
+  change?: string;
   color: string;
 }
 
