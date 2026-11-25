@@ -17,7 +17,7 @@
       <div class="stat">
         <span class="label">{{ (info.title) | translate }}</span>
         <b>{{ info.value }}</b>
-        <small [class.up]="info.color === 'up'">{{ info.change ?? '' }} {{ (info.describe) | translate }}</small>
+        <small [class.up]="info.color === 'up'">{{ (info.change ?? '') | translate }} {{ (info.describe) | translate }}</small>
       </div>
     }
   </section>
